@@ -10,13 +10,19 @@ import {
 import { Card, CardBody, CardFooter } from "@chakra-ui/react";
 import { FaRegUser } from "react-icons/fa6";
 import { RiLockPasswordLine } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 
 const LoginCard = () => {
+  const navigation =useNavigate();
+
+  const handleLogin=()=>{
+    navigation("/home")
+  }
   return (
     <>
       <div style={cardContainer}>
         <Card
-          width={{ base: "46vh", md: "406px", lg: "406px",xl:'406px'}}
+          width={{ base: "46vh", md: "406px", lg: "406px",xl:'486px'}}
           height={{ base: "auto", md: "424px", lg: "424px" }}
           padding={{ base: "20px", md: "0px", lg: "0px" }}
           backgroundColor={"#fff"}
@@ -45,7 +51,7 @@ const LoginCard = () => {
               </InputGroup>
               <Text {...forgotText}>Forgot Password</Text>
               <CardFooter>
-                <Button {...loginButton}>Login</Button>
+                <Button {...loginButton} onClick={handleLogin}>Login</Button>
               </CardFooter>
             </Stack>
           </CardBody>

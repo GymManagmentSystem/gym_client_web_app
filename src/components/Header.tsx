@@ -6,7 +6,7 @@ import {
   Box,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import Logo from "../assets/Group 1.png";
+import Logo from "../assets/logo.png";
 import { PiList } from "react-icons/pi";
 
 const Header = () => {

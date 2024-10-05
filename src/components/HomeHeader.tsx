@@ -44,6 +44,11 @@ import {
       color: "#000",
       cursor: "pointer",
     },
+    focus:{
+      color:'#000',
+      bg:'#fff',
+      
+    }
   };
   
   const isMobileLogo = {

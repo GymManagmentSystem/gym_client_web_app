@@ -1,21 +1,21 @@
-import { Grid, GridItem, Image } from "@chakra-ui/react";
+import { Grid, GridItem, Image, Text, Box } from "@chakra-ui/react";
 import HomeHeader from "../components/HomeHeader";
-import HomeImage from "../assets/home.png"
+import HomeImage from "../assets/home.png";
 import Footer from "../components/Footer";
+import ProgressChart from "../components/Home/ProgressChart";
+
 const Home = () => {
   return (
     <>
-    
       <Grid
         templateAreas={{
-          base:`"header "main" "footer"`,
-          lg:`"header" "main" "footer"`
+          base: `"header" "main" "footer"`,
+          lg: `"header" "main" "footer"`,
         }}
-        gridTemplateRows={"100px 1fr 500px"}
+        gridTemplateRows={"100px 1fr"}
         gridTemplateColumns={"1fr"}
-        height={'100vh'}
+        height={"auto"}
       >
-        
         <GridItem
           pl="2"
           bg="#F1B900"
@@ -26,35 +26,84 @@ const Home = () => {
           width="100%"
           zIndex="10"
         >
-          <HomeHeader/>
+          <HomeHeader />
         </GridItem>
-       
+
         <GridItem
           pl="2"
           area={"main"}
-          position={"fixed"}
+          position={"relative"} 
           left="0"
           width="100%"
-          padding={"0"}
-          paddingTop={'100px'}
-        
+          padding="0"
+          
         >
-          <Image src={HomeImage} width={'100%'} height={'100vh'} objectFit={"cover"}/>
-         
+          <Box position="relative" width="100%" height="auto">
+            <Image
+              src={HomeImage}
+              width={"100%"}
+              height={"auto"}
+              objectFit={"cover"}
+            />
+            
+            <Box
+              position="absolute" // Overlaying text
+              zIndex="2" 
+              left={'50%'}
+              top={'20%'}
+              transform="translate(-50%,-50%) " 
+              mt={{base:10,md:20,lg:20}}    
+                 
+            >
+              <Text sx={welcomeText}>
+                Welcome Back, Wilson!
+              </Text>
+              <Text sx={readyText}>Ready for today's workout?</Text>
+              <Text sx={keepText}>Keep moving forward!</Text>
+            </Box>
+          </Box>
+          
+          <ProgressChart/>
+       
         </GridItem>
 
-        <GridItem    pl="2"
+        <GridItem
+          pl="2"
           area={"footer"}
-          position={"fixed"}
           left="0"
           width="100%"
-          padding={"0"}
-          paddingTop={'100px'}>
-            <Footer/>
+          padding="0"
+        >
+          <Footer />
         </GridItem>
       </Grid>
     </>
   );
 };
 
+const welcomeText={
+  fontSize:{base:'28px',md:'60px',lg:'70px',xl:'90px'},
+  fontWeight:'bold',
+  color:'#fff',
+  whiteSpace: 'nowrap', // Prevent text from breaking into two lines
+  textAlign: 'center',
+  //mt:50
+
+}
+
+const readyText={
+  color:'#F1B900',
+  fontSize:{base:'20px',md:'40px',lg:'50px',xl:'70px'},
+  fontWeight:'bold',
+  textAlign:'center'
+}
+
+const keepText={
+  color:'#fff',
+  fontSize:{base:'18px',md:'30px',lg:'40px',xl:'50px'},
+  fontWeight:'semibold',
+  textAlign:'center',
+  
+
+}
 export default Home;

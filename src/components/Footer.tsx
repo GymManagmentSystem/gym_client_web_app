@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <>
       <Box {...fullBox}>
-        <HStack justifyContent={"space-between"} flexDirection={ "row" }>
+        <HStack justifyContent={"space-between"} flexDirection={ "row" } >
           <Text {...topText}>GET IN TOUCH</Text>
           <Image
             src={Logo}

@@ -1,7 +1,7 @@
 import { Box, Grid, GridItem, Image } from "@chakra-ui/react";
 import Header from "../components/Header";
 import LoginImage from "../assets/login.png";
-import LoginCard from "../components/LoginCard";
+import LoginCard from "../components/login/LoginCard";
 
 const Login = () => {
   return (

@@ -3,6 +3,7 @@ import HomeHeader from "../components/HomeHeader";
 import HomeImage from "../assets/home.png";
 import Footer from "../components/Footer";
 import ProgressChart from "../components/Home/ProgressChart";
+import MySchedule from "../components/Home/MySchedule";
 
 const Home = () => {
   return (
@@ -62,9 +63,8 @@ const Home = () => {
               <Text sx={keepText}>Keep moving forward!</Text>
             </Box>
           </Box>
-          
           <ProgressChart/>
-       
+          <MySchedule/>
         </GridItem>
 
         <GridItem

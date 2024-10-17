@@ -22,14 +22,12 @@ const ProgressChart = () => {
           borderRadius={"35px"}
           bg={"#F2F2F2"}
           width={{base:'auto',md:'auto',lg:800,xl:800}}
-        >
+        >  
           <Image src={FitnessManImage} width={300} objectFit={"cover"} />
           <Stack>
             <CardBody>
               <Text sx={{ color: "#F1B900",fontSize:{ base: "18px", md: "22px", lg: "30px", xl: "30px" },fontWeight:'semibold'}}>Workouts</Text>
-              
               <DoughnutChart/>
-              
             </CardBody>
           </Stack>
         </Card>

@@ -30,7 +30,10 @@ const ScheduleCard = ({ date, name, sets, reps, image }: Props) => {
 
   const generateCheckboxes = (sets: number) => {
     return Array.from({ length: sets }).map((_, index) => (
-      <Checkbox key={index} defaultChecked {...checkboxStyles} />
+      <Checkbox 
+      key={index} 
+      defaultChecked 
+      {...checkboxStyles} />
     ));
   };
 

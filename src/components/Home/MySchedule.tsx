@@ -16,14 +16,14 @@ const MySchedule = () => {
     {
       date:"2024-10-10",
       name:"Bench press",
-      sets:4,
+      sets:3,
       reps:10,
       image:ExerciseImage
     },
     {
       date:"2024-10-10",
       name:"Bench press",
-      sets:4,
+      sets:5,
       reps:10,
       image:ExerciseImage
     },

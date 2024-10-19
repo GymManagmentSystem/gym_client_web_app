@@ -10,17 +10,31 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { Checkbox } from "@chakra-ui/react";
+import { useState } from "react";
 import { FaCalendarDay } from "react-icons/fa";
 
 interface Props {
+  index: number;
   date: string;
   name: string;
   sets: number;
   reps: number;
   image: string;
+  onCheckboxChange: (index: number, isChecked: boolean) => void;
+  isNextEnabled: boolean;
 }
 
-const ScheduleCard = ({ date, name, sets, reps, image }: Props) => {
+const ScheduleCard = ({
+  index,
+  date,
+  name,
+  sets,
+  reps,
+  image,
+  onCheckboxChange,
+  isNextEnabled,
+}: Props) => {
+  
   const iconSize = useBreakpointValue({
     base: "12px",
     md: "15px",
@@ -28,17 +42,36 @@ const ScheduleCard = ({ date, name, sets, reps, image }: Props) => {
     xl: "20px",
   });
 
-  const generateCheckboxes = (sets: number) => {
-    return Array.from({ length: sets }).map((_, index) => (
-      <Checkbox 
-      key={index} 
-      defaultChecked 
-      {...checkboxStyles} />
+  const [checkCount, setCheckCount] = useState(0);
+
+  //get checkbox count
+  const handleCheckboxChange = (isChecked: boolean) => {
+    const newCount = isChecked ? checkCount + 1 : checkCount - 1;
+    setCheckCount(newCount);
+    onCheckboxChange(index, newCount === sets);
+  };
+
+  // generate checkboxes using Array.from () function
+  const generateCheckboxes = (sets: number, isDisabled: boolean) => {
+    return Array.from({ length: sets }).map((_, checkboxIndex) => (
+      <Checkbox
+        key={checkboxIndex}
+        isChecked={checkCount > checkboxIndex}
+        onChange={(e) => handleCheckboxChange(e.target.checked)}
+        isDisabled={isDisabled}
+        {...checkboxStyles}
+      />
     ));
   };
 
+  const isDisabled = index !== 0 && !isNextEnabled;
   return (
-    <Box sx={mainBoxStyles}>
+    <Box
+      sx={{
+        ...mainBoxStyles,
+        ...(isDisabled && { pointerEvents: "none", opacity: "0.5" }),
+      }}
+    >
       <Card
         direction={{ base: "row" }}
         overflow="hidden"
@@ -76,7 +109,9 @@ const ScheduleCard = ({ date, name, sets, reps, image }: Props) => {
                 </VStack>
               </Box>
             </HStack>
-            <HStack {...checkboxHstack}>{generateCheckboxes(sets)}</HStack>
+            <HStack sx={checkboxHstack}>
+              {generateCheckboxes(sets, isDisabled)}
+            </HStack>
           </CardBody>
         </Stack>
         <Stack flex={1}>

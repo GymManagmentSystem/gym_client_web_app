@@ -38,7 +38,7 @@ const LoginCard = () => {
                     <FaRegUser />
                   </Box>
                 </InputLeftElement>
-                <Input {...inputText} type="text" placeholder="User Name" />
+                <Input {...inputText} type="text" placeholder="User Name" variant={'unstyled'}/>
               </InputGroup>
 
               <InputGroup sx={inputBody}>

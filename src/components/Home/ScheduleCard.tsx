@@ -52,6 +52,7 @@ const ScheduleCard = ({
   };
 
   // generate checkboxes using Array.from () function
+
   const generateCheckboxes = (sets: number, isDisabled: boolean) => {
     return Array.from({ length: sets }).map((_, checkboxIndex) => (
       <Checkbox
@@ -132,6 +133,7 @@ const mainBoxStyles = {
   m: { base: 2, md: 5, lg: 10 },
   pb: 3,
   display: { base: "block", lg: "flex" },
+  
 };
 
 const calendarIconBox = {

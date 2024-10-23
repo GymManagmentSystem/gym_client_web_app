@@ -73,7 +73,7 @@ const welcomeText = {
   color: "#fff",
   whiteSpace: "nowrap", // Prevent text from breaking into two lines
   textAlign: "center",
-  //mt:50
+  
 };
 
 const readyText = {

@@ -136,6 +136,7 @@ const CalculateBMI = () => {
           )}
         </VStack>
       </Stack>
+   
     </Box>
   );
 };

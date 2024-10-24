@@ -7,7 +7,7 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import Logo from "../assets/logo.png";
-import { PiList } from "react-icons/pi";
+import LoginDrawer from "./login/LoginDrawer";
 
 const Header = () => {
   const isMobile = useBreakpointValue({ base: true, lg: false });
@@ -17,12 +17,11 @@ const Header = () => {
       {isMobile ? (
         <HStack justifyContent="space-between" paddingX={5} height="100px">
           <Image {...isMobileLogo} />
-          <PiList {...listIcon} />
+          <LoginDrawer />
         </HStack>
       ) : (
         <HStack {...HstackStyles}>
           <Image {...logo} />
-
           <HStack spacing={10}>
             <Text sx={textStyles}>Home</Text>
             <Text sx={textStyles}>About</Text>
@@ -68,12 +67,6 @@ const logo = {
   _hover: { cursor: "pointer" },
   width: "200px",
   height: "80px",
-};
-
-const listIcon = {
-  color: "#fff",
-  size: "30px",
-  cursor: "pointer",
 };
 
 const signupButton = {

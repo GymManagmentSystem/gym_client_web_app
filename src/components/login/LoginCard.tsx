@@ -62,10 +62,10 @@ const LoginCard = () => {
     <Box style={cardContainer}>
       <Card
         width={{ base: "78%", md: "100%" }}
-        height={{ base: "auto", md: "auto" }}
+        height={{ base: "auto" }}
         padding={{ base: "20px", md: "0px" }}
         backgroundColor={"#fff"}
-        borderRadius={"30px"}
+        borderRadius={"20px"}
       >
         <CardBody>
           <Text {...welcomeText}>Welcome</Text>
@@ -115,8 +115,8 @@ const LoginCard = () => {
                   {errors.password.message}
                 </Text>
               )}
+              <Text {...forgotText}>Forgot Password?</Text>
 
-              <Text {...forgotText}>Forgot Password</Text>
               <CardFooter>
                 <Button {...loginButton} type="submit">
                   Login
@@ -151,21 +151,30 @@ const loginPText = {
 };
 
 const forgotText = {
-  color: "#000",
+  color: "#FFDB65",
   alignSelf: "flex-end",
-  marginRight: 5,
+  fontSize: "sm",
+  marginRight: { md: 6, lg: 7 },
   _hover: { fontWeight: "bold", cursor: "pointer" },
 };
 
 const inputBody = {
   width: { base: "40vh", md: "50vh", lg: "50vh" },
   height: "40px",
-  backgroundColor: "#FFDB65",
-  borderRadius: "18px",
+  backgroundColor: "#fff",
+  borderRadius: "15px",
+  borderColor: "#B1B0AD",
+  borderWidth: 1,
+  _hover: {
+    borderColor: "#FFDB65",
+    backgroundColor: "#fff",
+    borderRadius: "15px",
+    borderWidth: 3,
+  },
 };
 
 const inputIcon = {
-  color: "#000",
+  color: "#B1B0AD",
   _hover: {
     color: "#FFDB65",
     cursor: "pointer",
@@ -174,36 +183,28 @@ const inputIcon = {
 
 const inputText = {
   variant: "unstyled",
-  _placeholder: { color: "#000" },
-  color: "#000",
-  _hover: {
-    borderColor: "#FFDB65",
-    backgroundColor: "#fff",
-    borderRadius: "30px",
-    borderWidth: "2px",
-    _placeholder: { color: "#B1B0AD" },
-  },
+  _placeholder: { color: "#B1B0AD" },
+  color: "#B1B0AD",
 };
 
 const stackStyles = {
   alignItems: "center",
   justifyContent: "center",
-  marginTop: { base: 10, md: 10, lg: 10 },
+  marginTop: { base: 10 },
 };
 
 const loginButton = {
   width: { base: "40vh", md: "50vh", lg: "50vh" },
   height: "40px",
-  bg: "#fff",
+  bg: "#FFDB65",
   border: "2px solid",
-  borderColor: "#FFDB65",
-  color: "#FFDB65",
+  color: "#fff",
   fontWeight: "semibold",
-  borderRadius: "20px",
-  fontSize: { base: "20px", md: "28px", lg: "28px" },
+  borderRadius: "15px",
+  fontSize: { base: "sm", md: "md", lg: "lg" },
   alignItems: "center",
   justifyContent: "center",
-  _hover: { color: "#fff", bg: "#FFDB65" },
+  _hover: { color: "#fff", bg: "#FFD035" },
 };
 
 export default LoginCard;

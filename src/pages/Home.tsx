@@ -1,5 +1,5 @@
 import { Grid, GridItem, Image, Text, Box } from "@chakra-ui/react";
-import HomeHeader from "../components/HomeHeader";
+import HomeHeader from "../components/Home/HomeHeader";
 import HomeImage from "../assets/Home.png";
 import Footer from "../components/Footer";
 import ProgressChart from "../components/Home/ProgressChart";
@@ -10,10 +10,7 @@ const Home = () => {
   return (
     <>
       <Grid
-        templateAreas={{
-          base: `"header" "main" "footer"`,
-          lg: `"header" "main" "footer"`,
-        }}
+        templateAreas={`"header" "main" "footer"`}
         gridTemplateRows={"100px 1fr"}
         gridTemplateColumns={"1fr"}
         height={"auto"}
@@ -73,7 +70,6 @@ const welcomeText = {
   color: "#fff",
   whiteSpace: "nowrap", // Prevent text from breaking into two lines
   textAlign: "center",
-  
 };
 
 const readyText = {

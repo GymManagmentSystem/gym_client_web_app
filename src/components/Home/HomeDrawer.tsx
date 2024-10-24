@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { PiList } from "react-icons/pi";
+import { Link } from "react-router-dom";
 
 const HomeDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -51,11 +52,22 @@ const HomeDrawer = () => {
                   }}
                 />
               </Box>
-              <Text sx={textStyles}>Home</Text>
-              <Text sx={textStyles}>Exercises</Text>
-              <Text sx={textStyles}>Schedule</Text>
-              <Text sx={textStyles}>Payment</Text>
-              <Text sx={textStyles}>Announcements</Text>
+              <Link to="/home">
+                <Text sx={textStyles}>Home</Text>
+              </Link>
+
+              <Link to="/exercises">
+                <Text sx={textStyles}>Exercises</Text>
+              </Link>
+              <Link to="/schedule">
+                <Text sx={textStyles}>Schedule</Text>
+              </Link>
+              <Link to="/payment">
+                <Text sx={textStyles}>Payment</Text>
+              </Link>
+              <Link to="/announcements">
+                <Text sx={textStyles}>Announcements</Text>
+              </Link>
             </Stack>
           </DrawerBody>
         </DrawerContent>

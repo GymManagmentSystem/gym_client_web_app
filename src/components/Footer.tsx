@@ -6,12 +6,13 @@ import { MdOutlinePhoneInTalk } from "react-icons/md";
 import { RiFacebookCircleLine } from "react-icons/ri";
 import { FaInstagram } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <>
       <Box {...fullBox}>
-        <HStack justifyContent={"space-between"} flexDirection={ "row" } >
+        <HStack justifyContent={"space-between"} flexDirection={"row"}>
           <Text {...topText}>GET IN TOUCH</Text>
           <Image
             src={Logo}
@@ -29,29 +30,44 @@ const Footer = () => {
             justifyContent={"space-between"}
             spacing={6}
             width={"100%"}
-            flexDirection={{ base: "column", md: "row" }} 
+            flexDirection={{ base: "column", md: "row" }}
             alignItems={{ base: "center", md: "flex-start" }}
           >
             <VStack
               flex={1}
-              alignItems={"flex-start"} 
+              alignItems={"flex-start"}
               spacing={6}
               width={{ base: "100%", md: "auto" }}
               mb={{ base: 8, md: 0 }}
             >
               <HStack>
-                <Box as={MdOutlineLocationOn} {...iconStyles} w={iconsize} h={iconsize} />
+                <Box
+                  as={MdOutlineLocationOn}
+                  {...iconStyles}
+                  w={iconsize}
+                  h={iconsize}
+                />
                 <VStack alignItems={"flex-start"}>
                   <Text {...leftTexts}>MotionZone Fitness Center,</Text>
                   <Text {...leftTexts}>120/A, Main Road, Galle.</Text>
                 </VStack>
               </HStack>
               <HStack>
-                <Box as={MdOutlineMail} {...iconStyles} w={iconsize} h={iconsize} />
+                <Box
+                  as={MdOutlineMail}
+                  {...iconStyles}
+                  w={iconsize}
+                  h={iconsize}
+                />
                 <Text {...leftTexts}>motionzone@gmail.com</Text>
               </HStack>
               <HStack>
-                <Box as={MdOutlinePhoneInTalk} {...iconStyles} w={iconsize} h={iconsize} />
+                <Box
+                  as={MdOutlinePhoneInTalk}
+                  {...iconStyles}
+                  w={iconsize}
+                  h={iconsize}
+                />
                 <Text {...leftTexts}>+94 - 76 123 4567</Text>
               </HStack>
             </VStack>
@@ -62,44 +78,73 @@ const Footer = () => {
               spacing={6}
               width={{ base: "100%", md: "auto" }}
               mb={8}
-              ml={{md:'30px',lg:'70px'}}
+              ml={{ md: "30px", lg: "70px" }}
             >
-              <Text {...topbarNames}>Home</Text>
-              <Text {...topbarNames}>Exercises</Text>
-              <Text {...topbarNames}>Schedule</Text>
-              <Text {...topbarNames}>Payment</Text>
-              <Text {...topbarNames}>Announcements</Text>
+              <Link to="/home">
+                <Text sx={topbarNames}>Home</Text>
+              </Link>
+
+              <Link to="/exercises">
+                <Text sx={topbarNames}>Exercises</Text>
+              </Link>
+              <Link to="/schedule">
+                <Text sx={topbarNames}>Schedule</Text>
+              </Link>
+              <Link to="/payment">
+                <Text sx={topbarNames}>Payment</Text>
+              </Link>
+              <Link to="/announcements">
+                <Text sx={topbarNames}>Announcements</Text>
+              </Link>
             </VStack>
 
             <VStack
               flex={1}
               width={{ base: "100%", md: "auto" }}
-              alignItems={{ base: "center", md: "flex-start" }} 
+              alignItems={{ base: "center", md: "flex-start" }}
               mb={8}
             >
               <Text {...followusText}>FOLLOW US</Text>
-              <HStack justifyContent={"space-between"} spacing={8} mt={3} alignItems={'center'}>
-                <Box as={RiFacebookCircleLine} {...socialIconBox} w={iconsize} h={iconsize} />
-                <Box as={FaInstagram} {...socialIconBox} w={iconsize} h={iconsize} />
-                <Box as={FaWhatsapp} {...socialIconBox} w={iconsize} h={iconsize} />
+              <HStack
+                justifyContent={"space-between"}
+                spacing={8}
+                mt={3}
+                alignItems={"center"}
+              >
+                <Box
+                  as={RiFacebookCircleLine}
+                  {...socialIconBox}
+                  w={iconsize}
+                  h={iconsize}
+                />
+                <Box
+                  as={FaInstagram}
+                  {...socialIconBox}
+                  w={iconsize}
+                  h={iconsize}
+                />
+                <Box
+                  as={FaWhatsapp}
+                  {...socialIconBox}
+                  w={iconsize}
+                  h={iconsize}
+                />
               </HStack>
             </VStack>
           </HStack>
         </Box>
       </Box>
 
-     
       <Box backgroundColor={"#F1B900"} height={"40px"} width="100%" />
     </>
   );
 };
 
-
 const fullBox = {
   backgroundColor: "#000",
   pl: { base: "25px", md: "35px", lg: "45px", xl: "70px" },
   pr: { base: "25px", md: "35px", lg: "45px", xl: "70px" },
-  height: { base: "auto", md: "400px", lg: "auto" }, 
+  height: { base: "auto", md: "400px", lg: "auto" },
   alignItems: "center",
   justifyContent: "center",
 };
@@ -141,7 +186,7 @@ const topbarNames = {
 
 const followusText = {
   color: "#fff",
-  fontWeight:'bold',
+  fontWeight: "bold",
   fontSize: { base: "20px", md: "22px", lg: "26px" },
 };
 

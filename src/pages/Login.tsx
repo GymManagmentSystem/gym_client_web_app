@@ -1,5 +1,5 @@
 import { Box, Grid, GridItem, Image } from "@chakra-ui/react";
-import Header from "../components/Header";
+import Header from "../components/login/Header";
 import LoginImage from "../assets/login.png";
 import LoginCard from "../components/login/LoginCard";
 
@@ -7,10 +7,7 @@ const Login = () => {
   return (
     <>
       <Grid
-        templateAreas={{
-          base: `"header "main"`,
-          lg: `"header" "main"`,
-        }}
+        templateAreas={`"header "main"`}
         gridTemplateRows={"100px 1fr"}
         gridTemplateColumns={"1fr"}
         height={"100vh"}

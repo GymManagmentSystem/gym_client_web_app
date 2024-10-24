@@ -13,7 +13,7 @@ import {
 import React from "react";
 import { PiList } from "react-icons/pi";
 
-const LoginDrawer = () => {
+const HomeDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef<HTMLButtonElement>(null);
 
@@ -38,7 +38,7 @@ const LoginDrawer = () => {
         <DrawerContent maxWidth={["75%", "40%"]}>
           <DrawerBody sx={{ bg: "#fff" }}>
             <Stack spacing={10}>
-              <Box sx={{ position: "relative" ,mb:4}}>
+              <Box sx={{ position: "relative", mb: 4 }}>
                 <DrawerCloseButton
                   color={"#000"}
                   sx={{
@@ -52,10 +52,10 @@ const LoginDrawer = () => {
                 />
               </Box>
               <Text sx={textStyles}>Home</Text>
-              <Text sx={textStyles}>About</Text>
-              <Text sx={textStyles}>Memberships</Text>
-              <Text sx={textStyles}>Gallery</Text>
-              <Text sx={textStyles}>Contact</Text>
+              <Text sx={textStyles}>Exercises</Text>
+              <Text sx={textStyles}>Schedule</Text>
+              <Text sx={textStyles}>Payment</Text>
+              <Text sx={textStyles}>Announcements</Text>
             </Stack>
           </DrawerBody>
         </DrawerContent>
@@ -74,4 +74,4 @@ const textStyles = {
   },
 };
 
-export default LoginDrawer;
+export default HomeDrawer;

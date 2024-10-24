@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { PiList } from "react-icons/pi";
+import { Link } from "react-router-dom";
 
 const LoginDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -38,7 +39,7 @@ const LoginDrawer = () => {
         <DrawerContent maxWidth={["75%", "40%"]}>
           <DrawerBody sx={{ bg: "#fff" }}>
             <Stack spacing={10}>
-              <Box sx={{ position: "relative" ,mb:4}}>
+              <Box sx={{ position: "relative", mb: 4 }}>
                 <DrawerCloseButton
                   color={"#000"}
                   sx={{
@@ -51,11 +52,22 @@ const LoginDrawer = () => {
                   }}
                 />
               </Box>
-              <Text sx={textStyles}>Home</Text>
-              <Text sx={textStyles}>About</Text>
-              <Text sx={textStyles}>Memberships</Text>
-              <Text sx={textStyles}>Gallery</Text>
-              <Text sx={textStyles}>Contact</Text>
+
+              <Link to="/commonHome">
+                <Text sx={textStyles}>Home</Text>
+              </Link>
+              <Link to="/about">
+                <Text sx={textStyles}>About</Text>
+              </Link>
+              <Link to="/memberships">
+                <Text sx={textStyles}>Memberships</Text>
+              </Link>
+              <Link to="/gallery">
+                <Text sx={textStyles}>Gallery</Text>
+              </Link>
+              <Link to="/contact">
+                <Text sx={textStyles}>Contact</Text>
+              </Link>
             </Stack>
           </DrawerBody>
         </DrawerContent>

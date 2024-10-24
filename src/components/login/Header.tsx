@@ -6,11 +6,17 @@ import {
   Box,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import Logo from "../assets/logo.png";
-import LoginDrawer from "./login/LoginDrawer";
+import Logo from "../../assets/logo.png";
+import LoginDrawer from "./LoginDrawer";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const isMobile = useBreakpointValue({ base: true, lg: false });
+  const location = useLocation();
+
+  const getFocusStyles = (path: any) => {
+    return location.pathname === path ? focusStyles : {};
+  };
 
   return (
     <Box bg="#F1B900" width="100%">
@@ -23,11 +29,31 @@ const Header = () => {
         <HStack {...HstackStyles}>
           <Image {...logo} />
           <HStack spacing={10}>
-            <Text sx={textStyles}>Home</Text>
-            <Text sx={textStyles}>About</Text>
-            <Text sx={textStyles}>Memberships</Text>
-            <Text sx={textStyles}>Gallery</Text>
-            <Text sx={textStyles}>Contact</Text>
+            <Link to="/commonHome">
+              <Text sx={{ ...textStyles, ...getFocusStyles("/commonHome") }}>
+                Home
+              </Text>
+            </Link>
+            <Link to="/about">
+              <Text sx={{ ...textStyles, ...getFocusStyles("/about") }}>
+                About
+              </Text>
+            </Link>
+            <Link to="/memberships">
+              <Text sx={{ ...textStyles, ...getFocusStyles("/memberships") }}>
+                Memberships
+              </Text>
+            </Link>
+            <Link to="/gallery">
+              <Text sx={{ ...textStyles, ...getFocusStyles("/gallery") }}>
+                Gallery
+              </Text>
+            </Link>
+            <Link to="/contact">
+              <Text sx={{ ...textStyles, ...getFocusStyles("/contact") }}>
+                Contact
+              </Text>
+            </Link>
           </HStack>
 
           <Button {...signupButton}>Sign Up</Button>
@@ -45,6 +71,16 @@ const textStyles = {
     color: "#000",
     cursor: "pointer",
   },
+};
+
+const focusStyles = {
+  color: "#000",
+  bg: "#fff",
+  width: "auto",
+  height: "auto",
+  px: 5,
+  py: 1,
+  borderRadius: "15px",
 };
 
 const isMobileLogo = {

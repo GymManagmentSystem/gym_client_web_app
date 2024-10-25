@@ -34,7 +34,6 @@ const ScheduleCard = ({
   onCheckboxChange,
   isNextEnabled,
 }: Props) => {
-  
   const iconSize = useBreakpointValue({
     base: "12px",
     md: "15px",
@@ -81,6 +80,14 @@ const ScheduleCard = ({
         width={{ base: "auto", md: "auto", lg: "80%" }}
         height={{ base: "50%", md: "250px", lg: "250px" }}
         justifyContent={"space-between"}
+        border={"1px"}
+      borderColor={"#E6E6E5"}
+      boxShadow={"lg"}
+      _hover={{
+        boxShadow: "xl",
+        transform: "scale(1.005)", // Pop-up
+        transition: "transform 0.2s ease, box-shadow 0.2s ease", // Smooth transition
+      }}
       >
         <Stack flex={1}>
           <CardBody bg={"#FFDD6D"}>
@@ -133,7 +140,6 @@ const mainBoxStyles = {
   m: { base: 2, md: 5, lg: 10 },
   pb: 3,
   display: { base: "block", lg: "flex" },
-  
 };
 
 const calendarIconBox = {

@@ -20,39 +20,39 @@ const Exercises = () => {
     },
     {
       image:
-        "https://apilyfta.com/static/GymvisualPNG/00471101-Barbell-Incline-Bench-Press_Chest_small.png",
-      name: "Bench Press",
+        "https://www.hevyapp.com/wp-content/uploads/02511201-Chest-Dip_Chest.jpg",
+      name: "Chest Dips",
       description:
-        "The bench press is performed by lying on a flat bench with feet firmly on the ground. Grip the barbell with hands slightly wider than shoulder-width apart, lower the bar to your chest, and press it upwards until your arms are fully extended. Repeat for the desired number of reps.",
+        "Hold onto parallel bars with arms extended, and lean slightly forward while bending your knees if necessary. Lower your body by bending your elbows until your chest is level with your hands, feeling a stretch across your chest. Push yourself back up to the starting position, keeping the movement controlled. Repeat for the desired number of reps.",
       type: "Strength",
       bodyArea: "Chest",
-      exerciseLevel: "Intermediate",
+      exerciseLevel: "Advanced",
       category: "Compound",
-      equipments: "Barbell, Bench",
+      equipments: "Parallel Bars",
     },
     {
       image:
-        "https://apilyfta.com/static/GymvisualPNG/00471101-Barbell-Incline-Bench-Press_Chest_small.png",
-      name: "Bench Press",
+        "https://www.lyfta.app/_next/image?url=%2Fthumbnails%2F13111201.jpg&w=3840&q=20",
+      name: "Wide Pushes",
       description:
-        "The bench press is performed by lying on a flat bench with feet firmly on the ground. Grip the barbell with hands slightly wider than shoulder-width apart, lower the bar to your chest, and press it upwards until your arms are fully extended. Repeat for the desired number of reps.",
+        "Start in a push-up position with hands wider than shoulder-width on the ground. Lower your body by bending the elbows outward until your chest nearly touches the ground, keeping your core tight. Push up through your palms until your arms are fully extended. Repeat for the desired number of reps.",
       type: "Strength",
       bodyArea: "Chest",
       exerciseLevel: "Intermediate",
-      category: "Compound",
-      equipments: "Barbell, Bench",
+      category: "Bodyweight",
+      equipments: "None",
     },
     {
       image:
-        "https://apilyfta.com/static/GymvisualPNG/00471101-Barbell-Incline-Bench-Press_Chest_small.png",
-      name: "Bench Press",
+        "https://apilyfta.com/static/GymvisualPNG/02271101-Cable-Standing-Fly_Chest-FIX_small.png",
+      name: "Cable Standing Fly",
       description:
-        "The bench press is performed by lying on a flat bench with feet firmly on the ground. Grip the barbell with hands slightly wider than shoulder-width apart, lower the bar to your chest, and press it upwards until your arms are fully extended. Repeat for the desired number of reps.",
+        "Stand between two cable pulleys with feet shoulder-width apart. Grip the handles with a slight bend in your elbows and arms extended at shoulder height. Pull the handles together in front of your chest in a controlled arc, focusing on contracting your chest muscles. Slowly return to the starting position. Repeat for the desired number of reps",
       type: "Strength",
       bodyArea: "Chest",
       exerciseLevel: "Intermediate",
-      category: "Compound",
-      equipments: "Barbell, Bench",
+      category: "Isolation",
+      equipments: "Cable Machine",
     },
   ];
   return (

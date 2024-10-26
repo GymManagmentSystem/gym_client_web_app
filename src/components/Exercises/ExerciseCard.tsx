@@ -17,6 +17,8 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  VStack,
+  Box,
 } from "@chakra-ui/react";
 
 interface Props {
@@ -45,6 +47,7 @@ const ExerciseCard = ({
   return (
     <Card
       maxW="md"
+      height={{ base: "auto", md: "500px" }}
       borderRadius="15px"
       bg="#fff"
       border="1px"
@@ -52,23 +55,76 @@ const ExerciseCard = ({
       boxShadow="lg"
       _hover={{
         boxShadow: "xl",
-        transform: "scale(1.02)", // Pop-up
-        transition: "transform 0.2s ease, box-shadow 0.2s ease", // Smooth transition
+        transform: "scale(1.02)",
+        transition: "transform 0.2s ease, box-shadow 0.2s ease",
       }}
     >
-      <CardBody>
-        <Center>
-          <Image src={image} />
-        </Center>
+      <VStack height="100%" spacing={0} align="stretch">
+        <Box
+          flex={{ base: "auto", md: "2" }}
+          overflow="hidden"
+          width="100%"
+          height={{ base: "200px", md: "250px" }}
+        >
+          <Center height="100%">
+            <Image
+              src={image}
+              height="100%"
+              width="100%"
+              objectFit="contain"
+              borderTopRadius="15px"
+            />
+          </Center>
+        </Box>
 
-        <Stack mt="6" spacing="3">
-          <Heading size="md" color="#000">
-            {name}
-          </Heading>
-          <Text color="#000" textAlign="justify"  fontSize={{base:'12px',md:'md'}}>
-            {description}
-          </Text>
-        </Stack>
+        <CardBody flex="1" p={4}>
+          <Stack spacing="3">
+            <Heading size="md" color="#F1B900" isTruncated>
+              {name}
+            </Heading>
+            <HStack color="#000">
+              <Text sx={titleText} flex={1}>
+                Exercise Type
+              </Text>
+              <Text sx={valueText} flex={1}>
+                {type}
+              </Text>
+            </HStack>
+            <HStack>
+              <Text sx={titleText} flex={1}>
+                Target Body Area
+              </Text>
+              <Text sx={valueText} flex={1}>
+                {bodyArea}
+              </Text>
+            </HStack>
+            <HStack>
+              <Text sx={titleText} flex={1}>
+                Exercise Level
+              </Text>
+              <Text sx={valueText} flex={1}>
+                {exerciseLevel}
+              </Text>
+            </HStack>
+            <HStack>
+              <Text sx={titleText} flex={1}>
+                Exercise Category
+              </Text>
+              <Text sx={valueText} flex={1}>
+                {category}
+              </Text>
+            </HStack>
+            <HStack>
+              <Text sx={titleText} flex={1}>
+                Equipment Required
+              </Text>
+              <Text sx={valueText} flex={1}>
+                {equipments}
+              </Text>
+            </HStack>
+          </Stack>
+        </CardBody>
+
         <CardFooter>
           <Button
             variant="solid"
@@ -79,56 +135,28 @@ const ExerciseCard = ({
             View More
           </Button>
         </CardFooter>
-      </CardBody>
+      </VStack>
 
-      <Modal isOpen={isOpen} onClose={onClose} size={{base:'xs',md:'sm',lg:'lg'}}>
+      {/* View More Modal */}
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        size={{ base: "xs", md: "sm", lg: "lg" }}
+      >
         <ModalOverlay />
-        <ModalContent bg={"#fff"} ml={3} mr={3}>
-          <ModalHeader color={"#000"} fontWeight={'bold'}>{name}</ModalHeader>
+        <ModalContent bg="#fff" ml={3} mr={3}>
+          <ModalHeader color="#000" fontWeight="bold" fontSize={"md"}>
+            {name}
+          </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Stack spacing="3">
-              <HStack color="#000">
-                <Text sx={titletext} flex={1}>
-                  Exercise Type :
-                </Text>
-                <Text sx={valueText} flex={1}>
-                  {type}
-                </Text>
-              </HStack>
-              <HStack>
-                <Text sx={titletext} flex={1}>
-                  Target Body Area :
-                </Text>
-                <Text sx={valueText} flex={1}>
-                  {bodyArea}
-                </Text>
-              </HStack>
-              <HStack>
-                <Text sx={titletext} flex={1}>
-                  Exercise Level :
-                </Text>
-                <Text sx={valueText} flex={1}>
-                  {exerciseLevel}
-                </Text>
-              </HStack>
-              <HStack>
-                <Text sx={titletext} flex={1}>
-                  Exercise Category :
-                </Text>
-                <Text sx={valueText} flex={1}>
-                  {category}
-                </Text>
-              </HStack>
-              <HStack>
-                <Text sx={titletext} flex={1}>
-                  Equipment Required :
-                </Text>
-                <Text sx={valueText} flex={1}>
-                  {equipments}
-                </Text>
-              </HStack>
-            </Stack>
+            <Text
+              fontSize={{ base: "12px", md: "14px" }}
+              color="#000"
+              textAlign="justify"
+            >
+              {description}
+            </Text>
           </ModalBody>
           <ModalFooter>
             <Button
@@ -146,14 +174,14 @@ const ExerciseCard = ({
   );
 };
 
-const titletext = {
+const titleText = {
   color: "#000",
   fontWeight: "semibold",
-  fontSize:{base:'12px',md:'md'}
+  fontSize: { base: "12px", md: "14px", lg: "16px" },
 };
 const valueText = {
   color: "#000",
-  fontSize:{base:'12px',md:'md'}
+  fontSize: { base: "12px", md: "14px", lg: "16px" },
 };
 
 export default ExerciseCard;

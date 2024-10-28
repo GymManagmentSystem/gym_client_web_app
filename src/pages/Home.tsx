@@ -3,7 +3,7 @@ import HomeHeader from "../components/Home/HomeHeader";
 import HomeImage from "../assets/Home.png";
 import Footer from "../components/Footer";
 import ProgressChart from "../components/Home/ProgressChart";
-import MySchedule from "../components/Home/MySchedule";
+import MySchedule from "../components/Home/TodaySchedule";
 import CalculateBMI from "../components/Home/CalculateBMI";
 
 const Home = () => {

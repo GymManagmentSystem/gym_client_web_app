@@ -7,8 +7,8 @@ const HomeHeader = () => {
   const isMobile = useBreakpointValue({ base: true, lg: false });
   const location = useLocation();
 
-  const getFocusStyles = (path: any) => {
-    return location.pathname === path ? focusStyles : {};
+  const getFocusStyles = (path: string) => {
+    return location.pathname.startsWith(path) ? focusStyles : {};
   };
 
   return (
@@ -21,7 +21,7 @@ const HomeHeader = () => {
       ) : (
         <HStack {...HstackStyles}>
           <Image {...logo} />
-        
+
           <HStack spacing={10}>
             <Link to="/home">
               <Text sx={{ ...textStyles, ...getFocusStyles("/home") }}>

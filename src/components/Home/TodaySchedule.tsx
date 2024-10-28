@@ -52,7 +52,7 @@ const MySchedule = () => {
   return (
     <Box bg={"#fff"}>
       <HorizontalBar />
-      <Text sx={titleText}>My Schedule</Text>
+      <Text sx={titleText}>Today Schedule</Text>
       {scheduleData.map(({ name, date, sets, reps, image }, index) => (
         <ScheduleCard
           key={index}

@@ -1,74 +1,97 @@
-import { Card, CardBody, Text, Box, HStack } from "@chakra-ui/react";
+import { Card, CardBody, Text, Box, Stack } from "@chakra-ui/react";
 import { FaCheckCircle } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-const WeekScheduleCard = () => {
+interface Day {
+  dayNo: number;
+  scheduleType: string;
+}
+export interface Props {
+  weekNo: number;
+  days: Day[];
+}
+
+const WeekScheduleCard = ({ weekNo, days }: Props) => {
+  const navigate = useNavigate();
+
+  const handleOnClick = (dayNo:number) => {
+    navigate(`/scheduleDetails/${weekNo}/${dayNo}`);
+  };
   return (
-    <Card
-      direction={'row'}
-      overflow="hidden"
-      variant="outline"
-      bg={"#fff"}
-      border={"2px"}
-      borderColor={"#000"}
-      ml={{base:5,md:10,lg:20}}
-      mr={{base:5,md:10,lg:20}}
+    <Box
+      display={"flex"}
+      alignItems={"center"}
+      justifyContent={"center"}
+      maxW="100vw"
+      overflowX="hidden"
+      px={{ base: 2, md: 10, lg: 20 }}
     >
-      <Box
-        sx={{
-          width: {base:'50%',md:'20%'},
-          bg: "#F0F0F0",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
+      <Card
+        direction="row"
+        overflow="hidden"
+        borderRadius="15px"
+        bg="#fff"
+        border="2px"
+        borderColor="#E6E6E5"
+        boxShadow="lg"
+        w={{ base: "100%" }}
+        mb={3}
       >
-        <Text sx={{ color: "#000", fontWeight: "bold", fontSize: "xl" }}>
-          Week 1
-        </Text>
-      </Box>
+        <Box sx={weekNoBoxStyles}>
+          <Text sx={weekNoText}>Week {weekNo}</Text>
+        </Box>
 
-      <CardBody>
-        <HStack spacing={5}>
-          <Box sx={dayBoxStyles}>
-            <Text>Day 1</Text>
-            <Text>Chest</Text>
-            <FaCheckCircle />
-          </Box>
-          <Box sx={dayBoxStyles}>
-            <Text>Day 1</Text>
-            <Text>Chest</Text>
-            <FaCheckCircle />
-          </Box>
-          <Box sx={dayBoxStyles}>
-            <Text>Day 1</Text>
-            <Text>Chest</Text>
-            <FaCheckCircle />
-          </Box>
-          <Box sx={dayBoxStyles}>
-            <Text>Day 1</Text>
-            <Text>Chest</Text>
-            <FaCheckCircle />
-          </Box>
-          <Box sx={dayBoxStyles}>
-            <Text>Day 1</Text>
-            <Text>Chest</Text>
-            <FaCheckCircle />
-          </Box>
-        
-        </HStack>
-      </CardBody>
-    </Card>
+        <CardBody overflow={"auto"}>
+          <Stack spacing={{ base: 1, md: 5 }} flexDirection={{ base: "row" }}>
+            {days.map(({ dayNo, scheduleType }) => (
+              <Box key={dayNo} sx={dayBoxStyles} onClick={()=>handleOnClick(dayNo)} cursor={'pointer'}>
+                <Text sx={dayTextStyles}>Day {dayNo}</Text>
+                <Text sx={dayTextStyles}>{scheduleType}</Text>
+                <Box sx={checkIconStyles}>
+                  <FaCheckCircle />
+                </Box>
+              </Box>
+            ))}
+          </Stack>
+        </CardBody>
+      </Card>
+    </Box>
   );
 };
-const dayBoxStyles = {
-  width:{base:'25%',md:'20%',lg:'15%'},
-  bg: "#7D7C7C",
-  border: "2px",
-  borderRadius: "15px",
+const weekNoBoxStyles = {
+  width: { base: "9vh", md: "15vh", lg: "25vh" },
+  minWidth: "9vh",
+  bg: "#F0F0F0",
   display: "flex",
-  flexDirection:'column',
   alignItems: "center",
   justifyContent: "center",
-  
 };
+const weekNoText = {
+  color: "#000",
+  fontWeight: "bold",
+  fontSize: { base: "sm", md: "lg", lg: "xl" },
+};
+const dayBoxStyles = {
+  width: { base: "6vh", md: "10vh", lg: "15vh" },
+  bg: "#7D7C7C",
+  borderRadius: "10px",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  p: 2,
+};
+
+const dayTextStyles = {
+  fontSize: { base: "12px", md: "14px" },
+  color: "#fff",
+  textAlign: "center",
+};
+
+const checkIconStyles = {
+  fontSize: { base: "12px", md: "15px" },
+  color: "#fff",
+  mt: 1,
+};
+
 export default WeekScheduleCard;

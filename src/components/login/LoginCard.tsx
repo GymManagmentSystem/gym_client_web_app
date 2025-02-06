@@ -14,6 +14,7 @@ import { FaRegUser } from "react-icons/fa6";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
+import useUserNameStore from "../../store/useUserNameStore";
 
 const schema = z.object({
   username: z
@@ -47,6 +48,8 @@ type LoginData = z.infer<typeof schema>;
 const LoginCard = () => {
   const navigate = useNavigate();
 
+  const {setName} = useUserNameStore();
+
   const {
     register,
     handleSubmit,
@@ -55,6 +58,7 @@ const LoginCard = () => {
 
   const onSubmit = (data: LoginData) => {
     console.log(data);
+    setName(data.username);
     navigate("/home");
   };
 

@@ -5,8 +5,11 @@ import Footer from "../components/Footer";
 import ProgressChart from "../components/Home/ProgressChart";
 import MySchedule from "../components/Home/TodaySchedule";
 import CalculateBMI from "../components/Home/CalculateBMI";
+import useUserNameStore from "../store/useUserNameStore";
 
 const Home = () => {
+  const {userName} = useUserNameStore();
+
   return (
     <>
       <Grid
@@ -45,7 +48,9 @@ const Home = () => {
               objectFit={"cover"}
             />
             <Box sx={textBoxStyles}>
-              <Text sx={welcomeText}>Welcome Back, Shashini!</Text>
+
+              <Text sx={welcomeText}>Welcome Back, {userName}!</Text>
+
               <Text sx={readyText}>Ready for today's workout?</Text>
               <Text sx={keepText}>Keep moving forward!</Text>
             </Box>

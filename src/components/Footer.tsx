@@ -90,9 +90,6 @@ const Footer = () => {
               <Link to="/schedule">
                 <Text sx={topbarNames}>Schedule</Text>
               </Link>
-              <Link to="/payment">
-                <Text sx={topbarNames}>Payment</Text>
-              </Link>
               <Link to="/announcements">
                 <Text sx={topbarNames}>Announcements</Text>
               </Link>

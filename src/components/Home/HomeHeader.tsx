@@ -39,11 +39,6 @@ const HomeHeader = () => {
                 Schedule
               </Text>
             </Link>
-            <Link to="/payment">
-              <Text sx={{ ...textStyles, ...getFocusStyles("/payment") }}>
-                Payment
-              </Text>
-            </Link>
             <Link to="/announcements">
               <Text sx={{ ...textStyles, ...getFocusStyles("/announcements") }}>
                 Announcements

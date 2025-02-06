@@ -71,7 +71,7 @@ const LoginCard = () => {
           <Text {...welcomeText}>Welcome</Text>
           <Text {...loginPText}>Login into your account</Text>
 
-          <form className="loginform" onSubmit={handleSubmit(onSubmit)}>
+          <form className="loginform" onSubmit={handleSubmit(onSubmit)} >
             <Stack {...stackStyles}>
               <InputGroup sx={inputBody}>
                 <InputLeftElement pointerEvents="none">
@@ -86,6 +86,7 @@ const LoginCard = () => {
                   placeholder="User Name"
                   variant={"unstyled"}
                   {...register("username")}
+                name="username"
                 />
               </InputGroup>
               {errors.username && (
@@ -107,6 +108,7 @@ const LoginCard = () => {
                   placeholder="Password"
                   variant={"unstyled"}
                   {...register("password")}
+                  name="password"
                 />
               </InputGroup>
 

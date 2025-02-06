@@ -48,7 +48,9 @@ const Home = () => {
               objectFit={"cover"}
             />
             <Box sx={textBoxStyles}>
+
               <Text sx={welcomeText}>Welcome Back, {userName}!</Text>
+
               <Text sx={readyText}>Ready for today's workout?</Text>
               <Text sx={keepText}>Keep moving forward!</Text>
             </Box>

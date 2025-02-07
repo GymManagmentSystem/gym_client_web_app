@@ -8,63 +8,31 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { Card, CardBody, CardFooter } from "@chakra-ui/react";
-import { zodResolver } from "@hookform/resolvers/zod/dist/zod.js";
 import { useForm } from "react-hook-form";
 import { FaRegUser } from "react-icons/fa6";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
-import { z } from "zod";
 import useUserNameStore from "../../store/useUserNameStore";
 
-
-
-const schema = z.object({
-  username: z
-    .string()
-    .min(1, { message: "User name field is required" })
-    .min(4, { message: "User name must contain at least 4 characters" })
-    .regex(/^[a-zA-Z0-9]+$/, {
-      message: "User name must contain only alphanumeric characters",
-    }),
-
-  password: z
-    .string()
-    .min(1, { message: "Password field is required" })
-    .min(8, { message: "Password must contain at least 8 characters" })
-    .regex(/[A-Z]/, {
-      message: "Password must contain at least one uppercase letter",
-    })
-    .regex(/[a-z]/, {
-      message: "Password must contain at least one lowercase letter",
-    })
-    .regex(/[0-9]/, {
-      message: "Password must contain at least one number",
-    })
-    .regex(/[@$!%*#?&]/, {
-      message: "Password must contain at least one special character",
-    }),
-});
-
-type LoginData = z.infer<typeof schema>;
+interface LoginData {
+  userName: string;
+  password: string;
+}
 
 const LoginCard = () => {
   const navigate = useNavigate();
-
-  const {setName} = useUserNameStore();
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginData>({ resolver: zodResolver(schema) });
+  const { setName } = useUserNameStore();
+  const { register, handleSubmit,formState:{errors},} = useForm<LoginData>();
 
   const onSubmit = (data: LoginData) => {
-    console.log(data);
-    setName(data.username);
-    navigate("/home");
+    if(data){
+      console.log(data);
+      setName(data.userName);
+      navigate("/home");
+    }
+    
   };
 
-  
   return (
     <Box style={cardContainer}>
       <Card
@@ -78,7 +46,7 @@ const LoginCard = () => {
           <Text {...welcomeText}>Welcome</Text>
           <Text {...loginPText}>Login into your account</Text>
 
-          <form className="loginform" onSubmit={handleSubmit(onSubmit)} >
+          <form className="loginform" onSubmit={handleSubmit(onSubmit)}>
             <Stack {...stackStyles}>
               <InputGroup sx={inputBody}>
                 <InputLeftElement pointerEvents="none">
@@ -86,21 +54,15 @@ const LoginCard = () => {
                     <FaRegUser />
                   </Box>
                 </InputLeftElement>
-
                 <Input
                   {...inputText}
                   type="text"
                   placeholder="User Name"
                   variant={"unstyled"}
-                  {...register("username")}
-                name="username"
+                  {...register("userName",{required:"UserName is required"})}
                 />
               </InputGroup>
-              {errors.username && (
-                <Text color="red" fontSize="sm">
-                  {errors.username.message}
-                </Text>
-              )}
+              {errors.userName && <Text sx={errorText}>{errors.userName.message}</Text>}
 
               <InputGroup sx={inputBody}>
                 <InputLeftElement pointerEvents="none">
@@ -108,22 +70,16 @@ const LoginCard = () => {
                     <RiLockPasswordLine />
                   </Box>
                 </InputLeftElement>
-
                 <Input
                   {...inputText}
                   type="password"
                   placeholder="Password"
                   variant={"unstyled"}
-                  {...register("password")}
-                  name="password"
+                  {...register("password",{required:"Password is required"})}
                 />
               </InputGroup>
+              {errors.password && <Text sx={errorText}>{errors.password.message}</Text>}
 
-              {errors.password && (
-                <Text color="red" fontSize="sm">
-                  {errors.password.message}
-                </Text>
-              )}
               <Text {...forgotText}>Forgot Password?</Text>
 
               <CardFooter>
@@ -215,5 +171,10 @@ const loginButton = {
   justifyContent: "center",
   _hover: { color: "#fff", bg: "#FFD035" },
 };
+
+const errorText={
+  color:'red',
+  fontSize:"sm"
+}
 
 export default LoginCard;

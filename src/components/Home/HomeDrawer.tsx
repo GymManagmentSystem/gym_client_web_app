@@ -62,11 +62,8 @@ const HomeDrawer = () => {
               <Link to="/schedule">
                 <Text sx={textStyles}>Schedule</Text>
               </Link>
-              <Link to="/payment">
-                <Text sx={textStyles}>Payment</Text>
-              </Link>
-              <Link to="/announcements">
-                <Text sx={textStyles}>Announcements</Text>
+              <Link to="/payments">
+                <Text sx={textStyles}>Payments</Text>
               </Link>
             </Stack>
           </DrawerBody>

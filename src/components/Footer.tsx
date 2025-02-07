@@ -90,8 +90,8 @@ const Footer = () => {
               <Link to="/schedule">
                 <Text sx={topbarNames}>Schedule</Text>
               </Link>
-              <Link to="/announcements">
-                <Text sx={topbarNames}>Announcements</Text>
+              <Link to="/payments">
+                <Text sx={topbarNames}>Payments</Text>
               </Link>
             </VStack>
 

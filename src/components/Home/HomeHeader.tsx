@@ -39,9 +39,9 @@ const HomeHeader = () => {
                 Schedule
               </Text>
             </Link>
-            <Link to="/announcements">
-              <Text sx={{ ...textStyles, ...getFocusStyles("/announcements") }}>
-                Announcements
+            <Link to="/payments">
+              <Text sx={{ ...textStyles, ...getFocusStyles("/payments") }}>
+                Payments
               </Text>
             </Link>
           </HStack>

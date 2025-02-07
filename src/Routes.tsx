@@ -4,8 +4,8 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Exercises from "./pages/Exercises";
 import Schedule from "./pages/Schedule";
-import Announcements from "./pages/Announcements";
 import ScheduleDetails from "./pages/ScheduleDetails";
+import Payments from "./pages/Payments";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
       { path: "home", element: <Home /> }, 
       { path: "exercises", element: <Exercises /> }, 
       { path: "schedule", element: <Schedule /> }, 
-      { path: "announcements", element: <Announcements /> }, 
+      { path: "payments", element: <Payments /> }, 
       { path: "scheduleDetails/:weekNo/:dayNo", element: <ScheduleDetails /> }, 
      
     ],

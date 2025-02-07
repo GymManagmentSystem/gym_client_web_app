@@ -96,6 +96,7 @@ const Schedule = () => {
           bg="#fff"
         >
           <Text sx={titleText}>Schedule</Text>
+          <Text sx={subText}>Current Schedule</Text>
 
           {Object.entries(groupedWeekScheduleData).map(([weekNo, days]) => (
             <WeekScheduleCard
@@ -120,4 +121,12 @@ const titleText = {
   mt: 5,
   mb: 5,
 };
+
+const subText={
+  fontSize: { base: "sm", md: "md", lg: "lg"},
+  color: "#000",
+  fontWeight:'semibold',
+  ml:{ base: 5, md: 10, lg: 20 },
+  mb:5
+}
 export default Schedule;

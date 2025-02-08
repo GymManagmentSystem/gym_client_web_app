@@ -1,7 +1,8 @@
 import { Box, Text } from "@chakra-ui/react";
 import HorizontalBar from "../HorizontalBar";
 import ScheduleCard from "./ScheduleCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useWorkoutCount from "../../store/useWorkoutCount";
 
 const MySchedule = () => {
   const scheduleData = [
@@ -38,9 +39,19 @@ const MySchedule = () => {
     },
   ];
 
+  const {setProgressCount} = useWorkoutCount();
+
+  useEffect(()=>{
+    if(scheduleData.length>0){
+      setProgressCount(0,scheduleData.length)
+    }
+  },[setProgressCount])
+
   const [completedSets, setCompletedSets] = useState(
     Array(scheduleData.length).fill(0)
   );
+
+  console.log(scheduleData.length);
 
   const handleCheckboxChange = (index: number, isAllChecked: boolean) => {
     // Update the completed sets count

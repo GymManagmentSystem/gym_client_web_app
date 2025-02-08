@@ -4,7 +4,6 @@ import HomeHeader from "../components/Home/HomeHeader"
 import PaymentHistoryTable from "../components/Payments/PaymentHistoryTable"
 
 
-
 const Payments = () => {
   const paymentList=[
     {
@@ -25,9 +24,10 @@ const Payments = () => {
       PackageType:'three month',
       PaymentTime:'17:03:43',
       PaymentDate:'2025-01-20',
-      PaymentValidity:'Expire',
+      PaymentValidity:'Valid',
       ExpireDate:'2025-03-20'
     },
+   
 
   ]
   return (

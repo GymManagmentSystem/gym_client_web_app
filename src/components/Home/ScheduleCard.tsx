@@ -12,6 +12,7 @@ import {
 import { Checkbox } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaCalendarDay } from "react-icons/fa";
+import useWorkoutCount from "../../store/useWorkoutCount";
 
 interface Props {
   index: number;
@@ -40,6 +41,7 @@ const ScheduleCard = ({
     lg: "18px",
     xl: "20px",
   });
+  const { completed, totalWorkouts, setProgressCount } = useWorkoutCount();
 
   const [checkCount, setCheckCount] = useState(0);
 
@@ -48,6 +50,15 @@ const ScheduleCard = ({
     const newCount = isChecked ? checkCount + 1 : checkCount - 1;
     setCheckCount(newCount);
     onCheckboxChange(index, newCount === sets);
+
+    //update progress chart according to complete workout count
+    if (isChecked && newCount === sets) {
+      setProgressCount(completed + 1, totalWorkouts);
+    } else if (!isChecked && newCount === sets - 1) {
+      setProgressCount(completed - 1, totalWorkouts);
+    } else if (newCount < sets) {
+      setProgressCount(completed, totalWorkouts);
+    }
   };
 
   // generate checkboxes using Array.from () function
@@ -81,13 +92,13 @@ const ScheduleCard = ({
         height={{ base: "50%", md: "250px", lg: "250px" }}
         justifyContent={"space-between"}
         border={"1px"}
-      borderColor={"#E6E6E5"}
-      boxShadow={"lg"}
-      _hover={{
-        boxShadow: "xl",
-        transform: "scale(1.005)", // Pop-up
-        transition: "transform 0.2s ease, box-shadow 0.2s ease", // Smooth transition
-      }}
+        borderColor={"#E6E6E5"}
+        boxShadow={"lg"}
+        _hover={{
+          boxShadow: "xl",
+          transform: "scale(1.005)", // Pop-up
+          transition: "transform 0.2s ease, box-shadow 0.2s ease", // Smooth transition
+        }}
       >
         <Stack flex={1}>
           <CardBody bg={"#FFDD6D"}>

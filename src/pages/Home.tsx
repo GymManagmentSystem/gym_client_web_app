@@ -70,7 +70,7 @@ const Home = () => {
 };
 
 const welcomeText = {
-  fontSize: { base: "28px", md: "60px", lg: "70px", xl: "90px" },
+  fontSize: { base: "24px", md: "60px", lg: "70px", xl: "90px" },
   fontWeight: "bold",
   color: "#fff",
   whiteSpace: "nowrap", // Prevent text from breaking into two lines

@@ -3,8 +3,13 @@ import HorizontalBar from "../HorizontalBar";
 import ScheduleCard from "./ScheduleCard";
 import { useEffect, useState } from "react";
 import useWorkoutCount from "../../store/useWorkoutCount";
+import { motion} from "framer-motion";
+import useAnimatedInView from "../../hooks/useAnimatedInView";
+
+const MotionText = motion(Text);
 
 const MySchedule = () => {
+  
   const scheduleData = [
     {
       date: "2024-10-10",
@@ -27,7 +32,8 @@ const MySchedule = () => {
       name: "Wide Pushes",
       sets: 3,
       reps: 10,
-      image: "https://www.lyfta.app/_next/image?url=%2Fthumbnails%2F13111201.jpg&w=3840&q=20",
+      image:
+        "https://www.lyfta.app/_next/image?url=%2Fthumbnails%2F13111201.jpg&w=3840&q=20",
     },
     {
       date: "2024-10-10",
@@ -39,13 +45,13 @@ const MySchedule = () => {
     },
   ];
 
-  const {setProgressCount} = useWorkoutCount();
+  const { setProgressCount } = useWorkoutCount();
 
-  useEffect(()=>{
-    if(scheduleData.length>0){
-      setProgressCount(0,scheduleData.length)
+  useEffect(() => {
+    if (scheduleData.length > 0) {
+      setProgressCount(0, scheduleData.length);
     }
-  },[setProgressCount])
+  }, [setProgressCount]);
 
   const [completedSets, setCompletedSets] = useState(
     Array(scheduleData.length).fill(0)
@@ -60,10 +66,21 @@ const MySchedule = () => {
     setCompletedSets(updatedSets);
   };
 
+  //for text animation
+const {ref:textRef,isInView:isTextInView} = useAnimatedInView();
+
   return (
     <Box bg={"#fff"}>
       <HorizontalBar />
-      <Text sx={titleText}>Today Schedule</Text>
+      <MotionText
+        ref={textRef}
+        sx={titleText}
+        initial={{ opacity: 0, x: 50 }}
+        animate={isTextInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
+        Today Schedule
+      </MotionText>
       {scheduleData.map(({ name, date, sets, reps, image }, index) => (
         <ScheduleCard
           key={index}

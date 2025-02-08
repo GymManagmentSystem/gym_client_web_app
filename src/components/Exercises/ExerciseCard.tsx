@@ -146,7 +146,7 @@ const ExerciseCard = ({
         <ModalOverlay />
         <ModalContent bg="#fff" ml={3} mr={3}>
           <ModalHeader color="#000" fontWeight="bold" fontSize={"md"}>
-            {name}
+          Exercise Description
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody>

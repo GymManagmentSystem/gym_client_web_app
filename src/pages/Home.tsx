@@ -6,9 +6,13 @@ import ProgressChart from "../components/Home/ProgressChart";
 import MySchedule from "../components/Home/TodaySchedule";
 import CalculateBMI from "../components/Home/CalculateBMI";
 import useUserNameStore from "../store/useUserNameStore";
+import { motion } from "framer-motion";
+import HorizontalBar from "../components/HorizontalBar";
+
+export const MotionText = motion(Text);
 
 const Home = () => {
-  const {userName} = useUserNameStore();
+  const { userName } = useUserNameStore();
 
   return (
     <>
@@ -48,17 +52,40 @@ const Home = () => {
               objectFit={"cover"}
             />
             <Box sx={textBoxStyles}>
+              <MotionText
+                sx={welcomeText}
+                initial={{ opacity: 0, y: -30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+              >
+                Welcome Back, {userName}!
+              </MotionText>
 
-              <Text sx={welcomeText}>Welcome Back, {userName}!</Text>
-
-              <Text sx={readyText}>Ready for today's workout?</Text>
-              <Text sx={keepText}>Keep moving forward!</Text>
+              <MotionText
+                sx={readyText}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
+              >
+                Ready for today's workout?
+              </MotionText>
+              <MotionText
+                sx={keepText}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1.5, ease: "easeOut", delay: 1 }}
+              >
+                Keep moving forward!
+              </MotionText>
             </Box>
           </Box>
 
           <ProgressChart />
           <MySchedule />
           <CalculateBMI />
+          <Box mt={{ base: 3, lg: 5 }} mb={{ base: 2, lg: 5 }}>
+            <HorizontalBar />
+          </Box>
         </GridItem>
 
         <GridItem pl="2" area={"footer"} left="0" width="100%" padding="0">

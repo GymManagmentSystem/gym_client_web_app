@@ -2,8 +2,12 @@ import { Box } from "@chakra-ui/react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import useWorkoutCount from "../../store/useWorkoutCount";
+import useAnimatedInView from "../../hooks/useAnimatedInView";
+import { motion, useInView } from "framer-motion";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
+
+const MotionBox = motion(Box);
 
 const DoughnutChart = () => {
   const { completed, totalWorkouts } = useWorkoutCount();
@@ -19,11 +23,27 @@ const DoughnutChart = () => {
     ],
   };
 
-  const options = {};
+  const options = {
+    maintainAspectRatio: false, // Prevent unwanted shrinking
+    responsive: true, // Ensure it resizes properly
+  };
+
+  const chartRef = useAnimatedInView().ref;
+  const isChartInView = useInView(chartRef, { margin: "-100px" });
+
   return (
-    <Box mt={5} ml={{ lg: 20 }}>
+    <MotionBox
+    ref={chartRef}
+    mt={5}
+    ml={{ lg: 20 }}
+    width="280px" 
+    height="280px"
+    initial={{ opacity: 0, scale: 0.9 }} 
+    animate={isChartInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+    transition={{ duration: 0.7, ease: "easeOut" }}
+    >
       <Doughnut data={data} options={options}></Doughnut>
-    </Box>
+    </MotionBox>
   );
 };
 

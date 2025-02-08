@@ -1,6 +1,20 @@
-import { Box, Button, Input, ListItem, Stack, Text, UnorderedList, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Input,
+  ListItem,
+  Stack,
+  Text,
+  UnorderedList,
+  VStack,
+} from "@chakra-ui/react";
 import HorizontalBar from "../HorizontalBar";
 import { useState } from "react";
+import useAnimatedInView from "../../hooks/useAnimatedInView";
+import { motion } from "framer-motion";
+
+const MotionText = motion(Text);
+const MotionUnorderdList = motion(UnorderedList);
 
 const CalculateBMI = () => {
   const [height, setHeight] = useState<string>("");
@@ -8,8 +22,8 @@ const CalculateBMI = () => {
   const [BMI, setBMI] = useState<string | null>(null);
   const [heightError, setHeightError] = useState<string | null>(null);
   const [weightError, setWeightError] = useState<string | null>(null);
-  const [BMIColor,setBMIColor] = useState<string>('#000');
-  const [BMIText,setBMIText] = useState<string |null>(null)
+  const [BMIColor, setBMIColor] = useState<string>("#000");
+  const [BMIText, setBMIText] = useState<string | null>(null);
 
   const handleSubmit = () => {
     setHeightError(null);
@@ -24,10 +38,11 @@ const CalculateBMI = () => {
     if (height && weight) {
       const heightInMeters = parseFloat(height) / 100;
       const weightInKg = parseFloat(weight);
-      const BMIValue = (weightInKg / (heightInMeters * heightInMeters)).toFixed(2);
+      const BMIValue = (weightInKg / (heightInMeters * heightInMeters)).toFixed(
+        2
+      );
       setBMI(BMIValue);
-      changeBMIColor(parseFloat(BMIValue))
-      
+      changeBMIColor(parseFloat(BMIValue));
     } else {
       setBMI(null);
     }
@@ -45,53 +60,83 @@ const CalculateBMI = () => {
     setWeightError(null);
   };
 
-  const changeBMIColor =(bmi:number)=>{
-    if(bmi<18.5){
-      setBMIColor("#01D1FB")//blue
-      setBMIText('Underweight')
-      
-    }else if(bmi>=18.5 && bmi<22.9){
-      setBMIColor("#1BD60B")//green
-      setBMIText('Normal')
-
-    }else if(bmi>=23 && bmi<24.9){
-      setBMIColor("#ECFF21")//yellow
-      setBMIText('Risk to Overweight')
-
-    }else if(bmi>=25 && bmi<29.9){
-      setBMIColor("#FF7512")//orange
-      setBMIText('Overweight')
-
-    }else if(bmi>=30){
-      setBMIColor("#D81313")//red
-      setBMIText('Obese')
-    }else{
-      setBMIColor("#000")//default
+  const changeBMIColor = (bmi: number) => {
+    if (bmi < 18.5) {
+      setBMIColor("#01D1FB"); //blue
+      setBMIText("Underweight");
+    } else if (bmi >= 18.5 && bmi < 22.9) {
+      setBMIColor("#1BD60B"); //green
+      setBMIText("Normal");
+    } else if (bmi >= 23 && bmi < 24.9) {
+      setBMIColor("#ECFF21"); //yellow
+      setBMIText("Risk to Overweight");
+    } else if (bmi >= 25 && bmi < 29.9) {
+      setBMIColor("#FF7512"); //orange
+      setBMIText("Overweight");
+    } else if (bmi >= 30) {
+      setBMIColor("#D81313"); //red
+      setBMIText("Obese");
+    } else {
+      setBMIColor("#000"); //default
     }
-  }
+  };
+
+  const { ref: textRef, isInView: isTextInView } = useAnimatedInView();
+  const { ref: listRef, isInView: isListInView } = useAnimatedInView();
 
   return (
     <Box bg={"#fff"} m={2}>
       <HorizontalBar />
-      <Text sx={titleText}>Calculate BMI</Text>
+      <MotionText
+        ref={textRef}
+        sx={titleText}
+        initial={{ opacity: 0, x: 50 }}
+        animate={isTextInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
+        Calculate BMI
+      </MotionText>
       <Stack flexDirection={{ base: "column", md: "row" }} pl={10} pr={10}>
-        <Text sx={paragraphText} flex={1} lineHeight={6}>
-          Knowing your BMI (Body Mass Index) is beneficial as it provides a
-          quick assessment of whether your weight is within a healthy range for
-          your height. It helps identify potential health risks associated with
-          being underweight, overweight, or obese, such as heart disease,
-          diabetes, and hypertension.
-          
-          <UnorderedList color="#000" fontSize={{ base: "12px", md: "16px", lg: "16px", xl: "18px" }}mt={2} lineHeight={8}>
-        <ListItem>Underweight: BMI less than 18.5</ListItem>
-        <ListItem>Normal Weight: BMI 18.5 - 22.9</ListItem>
-        <ListItem>Risk to Overweight: BMI 23 - 24.9</ListItem>
-        <ListItem>Overweight: BMI 25 - 29.9</ListItem>
-        <ListItem>Obese: BMI 30 or greater</ListItem>
-      </UnorderedList>
-        </Text>
-        
-        <VStack flex={1} >
+        <Stack flex={1} flexDirection={"column"}>
+          <MotionText
+            ref={textRef}
+            sx={paragraphText}
+            flex={1}
+            lineHeight={6}
+            initial={{ opacity: 0, x: -50 }} // Start from left
+            animate={
+              isTextInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }
+            } // Only animate when in view
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            Knowing your BMI (Body Mass Index) is beneficial as it provides a
+            quick assessment of whether your weight is within a healthy range
+            for your height. It helps identify potential health risks associated
+            with being underweight, overweight, or obese, such as heart disease,
+            diabetes, and hypertension.
+          </MotionText>
+
+          <MotionUnorderdList
+            ref={listRef}
+            color="#000"
+            fontSize={{ base: "12px", md: "16px", lg: "16px", xl: "18px" }}
+            mt={2}
+            lineHeight={8}
+            initial={{ opacity: 0, x: 50 }} // Start from right
+            animate={
+              isListInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }
+            } // Only animate when in view
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <ListItem>Underweight: BMI less than 18.5</ListItem>
+            <ListItem>Normal Weight: BMI 18.5 - 22.9</ListItem>
+            <ListItem>Risk to Overweight: BMI 23 - 24.9</ListItem>
+            <ListItem>Overweight: BMI 25 - 29.9</ListItem>
+            <ListItem>Obese: BMI 30 or greater</ListItem>
+          </MotionUnorderdList>
+        </Stack>
+
+        <VStack flex={1}>
           <Text sx={inputText}>Height (in cm) </Text>
           <Input
             variant="unstyled"
@@ -101,7 +146,7 @@ const CalculateBMI = () => {
             onChange={handleHeightChange}
             {...inputValues}
           />
-        
+
           <Text sx={inputText}>Weight (in kg) </Text>
           <Input
             variant="unstyled"
@@ -111,7 +156,7 @@ const CalculateBMI = () => {
             onChange={handleWeightChange}
             {...inputValues}
           />
-         
+
           <Button
             colorScheme="#F1B900"
             variant="outline"
@@ -131,12 +176,13 @@ const CalculateBMI = () => {
               justifyContent={"center"}
             >
               <Text sx={inputText}>BMI Value :</Text>
-              <Text sx={{...BMIValueText,color:BMIColor}}>{BMI}({BMIText})</Text>
+              <Text sx={{ ...BMIValueText, color: BMIColor }}>
+                {BMI}({BMIText})
+              </Text>
             </Stack>
           )}
         </VStack>
       </Stack>
-   
     </Box>
   );
 };
@@ -189,7 +235,6 @@ const BMIValueText = {
 
 const errorText = {
   color: "red",
-  
 };
 
 export default CalculateBMI;

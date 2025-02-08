@@ -1,7 +1,8 @@
-import { Grid, GridItem, Text } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Text } from "@chakra-ui/react";
 import Footer from "../components/Footer";
 import HomeHeader from "../components/Home/HomeHeader";
 import WeekScheduleCard from "../components/Schedule/WeekScheduleCard";
+import HorizontalBar from "../components/HorizontalBar";
 
 interface Day {
   weekNo: number;
@@ -105,6 +106,10 @@ const Schedule = () => {
               days={days}
             />
           ))}
+
+          <Box mt={{ base: 3, lg: 5 }} mb={{ base: 2, lg: 5 }}>
+            <HorizontalBar />
+          </Box>
         </GridItem>
         <GridItem pl="2" area={"footer"} left="0" width="100%" padding="0">
           <Footer />
@@ -122,11 +127,11 @@ const titleText = {
   mb: 5,
 };
 
-const subText={
-  fontSize: { base: "sm", md: "md", lg: "lg"},
+const subText = {
+  fontSize: { base: "sm", md: "md", lg: "lg" },
   color: "#000",
-  fontWeight:'semibold',
-  ml:{ base: 5, md: 10, lg: 20 },
-  mb:5
-}
+  fontWeight: "semibold",
+  ml: { base: 5, md: 10, lg: 20 },
+  mb: 5,
+};
 export default Schedule;

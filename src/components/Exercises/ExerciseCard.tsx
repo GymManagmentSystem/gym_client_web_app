@@ -20,6 +20,10 @@ import {
   VStack,
   Box,
 } from "@chakra-ui/react";
+import useAnimatedInView from "../../hooks/useAnimatedInView";
+import { motion } from "framer-motion";
+
+const MotionImage = motion(Image);
 
 interface Props {
   image: string;
@@ -44,6 +48,7 @@ const ExerciseCard = ({
 }: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const {ref:imageRef,isInView:isImageInView} = useAnimatedInView();
   return (
     <Card
       maxW="md"
@@ -67,12 +72,20 @@ const ExerciseCard = ({
           height={{ base: "200px", md: "250px" }}
         >
           <Center height="100%">
-            <Image
+            <MotionImage
+             ref={imageRef}
               src={image}
               height="100%"
               width="100%"
               objectFit="contain"
               borderTopRadius="15px"
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={
+                isImageInView
+                  ? { scale: 1, opacity: 1 }
+                  : { scale: 0.5, opacity: 0 }
+              }
+              transition={{ duration: 1.5, ease: "easeInOut" }} // Slow and smooth popup
             />
           </Center>
         </Box>

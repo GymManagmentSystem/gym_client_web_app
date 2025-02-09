@@ -13,6 +13,10 @@ import { Checkbox } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaCalendarDay } from "react-icons/fa";
 import useWorkoutCount from "../../store/useWorkoutCount";
+import useAnimatedInView from "../../hooks/useAnimatedInView";
+import { motion } from "framer-motion";
+
+const MotionImage = motion(Image);
 
 interface Props {
   index: number;
@@ -76,6 +80,8 @@ const ScheduleCard = ({
   };
 
   const isDisabled = index !== 0 && !isNextEnabled;
+
+  const { ref: imageRef, isInView: isImageInView } = useAnimatedInView();
   return (
     <Box
       sx={{
@@ -134,11 +140,19 @@ const ScheduleCard = ({
           </CardBody>
         </Stack>
         <Stack flex={1}>
-          <Image
+          <MotionImage
             src={image}
+            ref={imageRef}
             objectFit={"contain"}
             height={"100%"}
             width={"100%"}
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={
+              isImageInView
+                ? { scale: 1, opacity: 1 }
+                : { scale: 0.5, opacity: 0 }
+            }
+            transition={{ duration: 1.5, ease: "easeInOut" }} // Slow and smooth popup
           />
         </Stack>
       </Card>

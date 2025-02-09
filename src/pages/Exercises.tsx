@@ -3,6 +3,10 @@ import HomeHeader from "../components/Home/HomeHeader";
 import Footer from "../components/Footer";
 import ExerciseCard from "../components/Exercises/ExerciseCard";
 import HorizontalBar from "../components/HorizontalBar";
+import useAnimatedInView from "../hooks/useAnimatedInView";
+import { motion } from "framer-motion";
+
+const MotionText = motion(Text);
 
 const Exercises = () => {
   const exerciseData = [
@@ -55,6 +59,9 @@ const Exercises = () => {
       equipments: "Cable Machine",
     },
   ];
+
+  const { ref: textRef, isInView: isTextInView } = useAnimatedInView();
+
   return (
     <>
       <Grid
@@ -84,7 +91,17 @@ const Exercises = () => {
           padding="0"
           bg="#fff"
         >
-          <Text sx={titleText}>Exercises</Text>
+          <MotionText
+            ref={textRef}
+            sx={titleText}
+            initial={{ opacity: 0, x: 50 }}
+            animate={
+              isTextInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }
+            }
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
+            Exercises
+          </MotionText>
           <Stack width={"100%"} align={"center"} justify={"center"}>
             <SimpleGrid
               spacing={10}

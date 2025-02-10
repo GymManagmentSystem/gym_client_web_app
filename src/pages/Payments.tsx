@@ -3,6 +3,10 @@ import Footer from "../components/Footer";
 import HomeHeader from "../components/Home/HomeHeader";
 import PaymentHistoryTable from "../components/Payments/PaymentHistoryTable";
 import HorizontalBar from "../components/HorizontalBar";
+import { motion } from "framer-motion";
+import useAnimatedInView from "../hooks/useAnimatedInView";
+
+const MotionText = motion(Text);
 
 const Payments = () => {
   const paymentList = [
@@ -28,6 +32,9 @@ const Payments = () => {
       ExpireDate: "2025-03-20",
     },
   ];
+
+  const { ref: textRef, isInView: isTextInView } = useAnimatedInView();
+
   return (
     <>
       <Grid
@@ -57,7 +64,15 @@ const Payments = () => {
           padding="0"
           bg="#fff"
         >
-          <Text sx={titleText}>Payments</Text>
+          <MotionText
+            ref={textRef}
+            sx={titleText}
+            initial={{ opacity: 0, x: 50 }}
+            animate={
+              isTextInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }
+            }
+            transition={{ duration: 1, ease: "easeOut" }}
+          >Payments</MotionText>
           <Text sx={subText}>Your Payment History</Text>
           <PaymentHistoryTable paymentDetails={paymentList} />
           <Box mt={{ base: 3, lg: 5 }} mb={{ base: 2, lg: 5 }}>

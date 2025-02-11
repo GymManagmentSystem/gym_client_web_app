@@ -1,15 +1,9 @@
-import {
-  HStack,
-  Image,
-  Text,
-  Box,
-  useBreakpointValue,
-} from "@chakra-ui/react";
+import { HStack, Image, Text, Box, useBreakpointValue } from "@chakra-ui/react";
 import Logo from "../../assets/logo.png";
-import LoginDrawer from "./LoginDrawer";
 import { Link, useLocation } from "react-router-dom";
+import LoginDrawer from "../login/LoginDrawer";
 
-const Header = () => {
+const CommonHeader = () => {
   const isMobile = useBreakpointValue({ base: true, lg: false });
   const location = useLocation();
 
@@ -54,8 +48,6 @@ const Header = () => {
               </Text>
             </Link>
           </HStack>
-
-         
         </HStack>
       )}
     </Box>
@@ -91,6 +83,7 @@ const isMobileLogo = {
 
 const HstackStyles = {
   justifyContent: "space-between",
+
   alignItems: "center",
   paddingX: 10,
   height: "100px",
@@ -104,4 +97,4 @@ const logo = {
   height: "80px",
 };
 
-export default Header;
+export default CommonHeader;

@@ -13,7 +13,7 @@ const HorizontalBar = () => {
       width={"auto"}
       height={{ base: 0.5, lg: 1 }}
       bg={"#FFDB65"}
-      ml={{ base: 1, md: 2, lg: 4 }}
+      //ml={{ base: 1, md: 2, lg: 4 }}
       mr={{ base: 1, md: 2, lg: 4 }}
       initial={{ width: "0%" }}
       animate={isBarInView ? { width: "100%" } : { width: "0%" }}

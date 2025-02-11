@@ -1,21 +1,20 @@
-import {
-  HStack,
-  Image,
-  Text,
-  Box,
-  useBreakpointValue,
-} from "@chakra-ui/react";
+import { HStack, Image, Text, Box, useBreakpointValue, Button } from "@chakra-ui/react";
 import Logo from "../../assets/logo.png";
-import LoginDrawer from "./LoginDrawer";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import LoginDrawer from "../login/LoginDrawer";
 
-const Header = () => {
+const CommonHomeHeader = () => {
   const isMobile = useBreakpointValue({ base: true, lg: false });
   const location = useLocation();
+  const navigation = useNavigate();
 
   const getFocusStyles = (path: any) => {
     return location.pathname === path ? focusStyles : {};
   };
+
+  const handleLoginButton =()=>{
+    navigation("./login");
+  }
 
   return (
     <Box bg="#F1B900" width="100%">
@@ -54,8 +53,7 @@ const Header = () => {
               </Text>
             </Link>
           </HStack>
-
-         
+          <Button {...loginButton} onClick={handleLoginButton}>Login</Button>
         </HStack>
       )}
     </Box>
@@ -104,4 +102,14 @@ const logo = {
   height: "80px",
 };
 
-export default Header;
+const loginButton = {
+    height: "44px",
+    width: "150px",
+    bg: "#000",
+    color: "#fff",
+    borderRadius: "30px",
+    _hover: { bg: "#fff", color: "#000", borderRadius: "30px" },
+  };
+  
+
+export default CommonHomeHeader;

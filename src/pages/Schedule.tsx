@@ -3,6 +3,10 @@ import Footer from "../components/Footer";
 import HomeHeader from "../components/Home/HomeHeader";
 import WeekScheduleCard from "../components/Schedule/WeekScheduleCard";
 import HorizontalBar from "../components/HorizontalBar";
+import { motion } from "framer-motion";
+import useAnimatedInView from "../hooks/useAnimatedInView";
+
+const MotionText = motion(Text);
 
 interface Day {
   weekNo: number;
@@ -67,6 +71,9 @@ const Schedule = () => {
   ];
 
   const groupedWeekScheduleData = groupByWeek(weekScheduleData);
+
+  const { ref: textRef, isInView: isTextInView } = useAnimatedInView();
+
   return (
     <>
       <Grid
@@ -96,7 +103,17 @@ const Schedule = () => {
           padding="0"
           bg="#fff"
         >
-          <Text sx={titleText}>Schedule</Text>
+          <MotionText
+            ref={textRef}
+            sx={titleText}
+            initial={{ opacity: 0, x: 50 }}
+            animate={
+              isTextInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }
+            }
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
+            Schedule
+          </MotionText>
           <Text sx={subText}>Current Schedule</Text>
 
           {Object.entries(groupedWeekScheduleData).map(([weekNo, days]) => (

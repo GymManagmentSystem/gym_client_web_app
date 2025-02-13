@@ -1,9 +1,12 @@
 import { Grid, GridItem, Image, Text } from "@chakra-ui/react";
-import Footer from "../components/Footer";
 import CommonHomeHeader from "../components/CommonHome/CommonHomeHeader";
 import HomeImage_1 from "../assets/chome1.png";
 import HorizontalBar from "../components/HorizontalBar";
 import ElivateWellness from "../components/CommonHome/ElivateWellness";
+import CommonClientFooter from "../components/CommonClientFooter";
+import MiddleImage from "../components/CommonHome/MiddleImage";
+import Benifits from "../components/CommonHome/Benifits";
+import BottomImages from "../components/CommonHome/BottomImages";
 
 const CommonHome = () => {
   return (
@@ -48,10 +51,13 @@ const CommonHome = () => {
         </Text>
         <HorizontalBar />
         <ElivateWellness/>
+        <MiddleImage/>
+        <Benifits/>
+        <BottomImages/>
       </GridItem>
 
       <GridItem pl="2" area={"footer"} left="0" width="100%" padding="0">
-        <Footer />
+        <CommonClientFooter />
       </GridItem>
     </Grid>
   );

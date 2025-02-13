@@ -9,7 +9,7 @@ import useUserNameStore from "../store/useUserNameStore";
 import { motion } from "framer-motion";
 import HorizontalBar from "../components/HorizontalBar";
 
-export const MotionText = motion(Text);
+export const MotionText = motion.create(Text);
 
 const Home = () => {
   const { userName } = useUserNameStore();

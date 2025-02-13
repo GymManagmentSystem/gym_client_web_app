@@ -6,7 +6,7 @@ import useWorkoutCount from "../../store/useWorkoutCount";
 import { motion} from "framer-motion";
 import useAnimatedInView from "../../hooks/useAnimatedInView";
 
-const MotionText = motion(Text);
+const MotionText = motion.create(Text);
 
 const MySchedule = () => {
   

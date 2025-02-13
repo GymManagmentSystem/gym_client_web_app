@@ -2,7 +2,7 @@ import { Grid, GridItem } from "@chakra-ui/react";
 import CommonHeader from "../components/About/CommonHeader";
 import CommonClientFooter from "../components/CommonClientFooter";
 
-const Gallery = () => {
+const Contact = () => {
   return (
     <Grid
       templateAreas={`"header" "main" "footer"`}
@@ -33,10 +33,10 @@ const Gallery = () => {
       ></GridItem>
 
       <GridItem pl="2" area={"footer"} left="0" width="100%" padding="0">
-       <CommonClientFooter/>
+        <CommonClientFooter/>
       </GridItem>
     </Grid>
   );
 };
 
-export default Gallery;
+export default Contact;

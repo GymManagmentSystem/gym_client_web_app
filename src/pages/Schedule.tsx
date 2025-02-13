@@ -6,7 +6,7 @@ import HorizontalBar from "../components/HorizontalBar";
 import { motion } from "framer-motion";
 import useAnimatedInView from "../hooks/useAnimatedInView";
 
-const MotionText = motion(Text);
+const MotionText = motion.create(Text);
 
 interface Day {
   weekNo: number;

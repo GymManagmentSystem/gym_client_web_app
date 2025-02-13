@@ -13,7 +13,7 @@ import { useState } from "react";
 import useAnimatedInView from "../../hooks/useAnimatedInView";
 import { motion } from "framer-motion";
 
-const MotionText = motion(Text);
+const MotionText = motion.create(Text);
 const MotionUnorderdList = motion(UnorderedList);
 
 const CalculateBMI = () => {

@@ -9,6 +9,7 @@ import CommonHome from "./pages/CommonHome";
 import About from "./pages/About";
 import Memberships from "./pages/Memberships";
 import Gallery from "./pages/Gallery";
+import Contact from "./pages/Contact";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
       { path: "about", element: <About /> },
       { path: "memberships", element: <Memberships /> },
       { path: "gallery", element: <Gallery /> },
+      { path: "contact", element: <Contact /> },
     ],
   },
 ]);

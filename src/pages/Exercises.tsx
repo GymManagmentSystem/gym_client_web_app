@@ -6,7 +6,7 @@ import HorizontalBar from "../components/HorizontalBar";
 import useAnimatedInView from "../hooks/useAnimatedInView";
 import { motion } from "framer-motion";
 
-const MotionText = motion(Text);
+const MotionText = motion.create(Text);
 
 const Exercises = () => {
   const exerciseData = [

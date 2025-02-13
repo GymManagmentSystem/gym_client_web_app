@@ -13,8 +13,8 @@ import DoughnutChart from "./DoughnutChart";
 import { motion } from "framer-motion";
 import useAnimatedInView from "../../hooks/useAnimatedInView";
 
-const MotionText = motion(Text);
-const MotionImage = motion(Image);
+const MotionText = motion.create(Text);
+const MotionImage = motion.create(Image);
 
 const ProgressChart = () => {
   const { ref: textRef, isInView: isTextInView } = useAnimatedInView();

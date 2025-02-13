@@ -13,7 +13,7 @@ const CommonHomeHeader = () => {
   };
 
   const handleLoginButton =()=>{
-    navigation("./login");
+    navigation("/login");
   }
 
   return (

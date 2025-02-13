@@ -16,7 +16,7 @@ import useWorkoutCount from "../../store/useWorkoutCount";
 import useAnimatedInView from "../../hooks/useAnimatedInView";
 import { motion } from "framer-motion";
 
-const MotionImage = motion(Image);
+const MotionImage = motion.create(Image);
 
 interface Props {
   index: number;

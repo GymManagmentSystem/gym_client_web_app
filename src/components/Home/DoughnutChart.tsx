@@ -7,7 +7,7 @@ import { motion, useInView } from "framer-motion";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 const DoughnutChart = () => {
   const { completed, totalWorkouts } = useWorkoutCount();

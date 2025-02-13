@@ -1,6 +1,8 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import CommonHeader from "../components/About/CommonHeader";
 import CommonClientFooter from "../components/CommonClientFooter";
+import TopText from "../components/About/TopText";
+import ExpertDetails from "../components/About/ExpertDetails";
 
 const About = () => {
   return (
@@ -30,7 +32,10 @@ const About = () => {
         width="100%"
         padding="0"
         bg="#fff"
-      ></GridItem>
+      >
+        <TopText/>
+        <ExpertDetails/>
+      </GridItem>
 
       <GridItem pl="2" area={"footer"} left="0" width="100%" padding="0">
         <CommonClientFooter/>

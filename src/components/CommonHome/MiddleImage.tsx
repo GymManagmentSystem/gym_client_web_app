@@ -1,8 +1,13 @@
 import { Box, Image, Text } from "@chakra-ui/react";
 import backgroundImage from "../../assets/chome4.png";
 import HorizontalBar from "../HorizontalBar";
+import { motion } from "framer-motion";
+import useAnimatedInView from "../../hooks/useAnimatedInView";
+
+const MotionText = motion.create(Text);
 
 const MiddleImage = () => {
+  const { ref: textRef, isInView: isTextInView } = useAnimatedInView();
   return (
     <Box
       mt={{ base: 3, md: 5, lg: 8 }}
@@ -24,11 +29,19 @@ const MiddleImage = () => {
         width={"50%"}
         right={0}
       >
-        <Text sx={textStyle}>
+        <MotionText
+          ref={textRef}
+          sx={textStyle}
+          initial={{ opacity: 0, scale: 0.5 }} // Start small and invisible
+          animate={
+            isTextInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }
+          } // Gradually becomes visible and normal size
+          transition={{ duration: 3, ease: "easeOut" }}
+        >
           We’re here to guide you, support your fitness journey, and empower you
           with the knowledge and tools to achieve your health and wellness
           goals.
-        </Text>
+        </MotionText>
       </Box>
       <HorizontalBar />
     </Box>

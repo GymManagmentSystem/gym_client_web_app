@@ -7,13 +7,28 @@ import { RiFacebookCircleLine } from "react-icons/ri";
 import { FaInstagram } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import useAnimatedInView from "../hooks/useAnimatedInView";
+
+const MotionText = motion.create(Text);
 
 const Footer = () => {
+  const { ref: textRef, isInView: isTextInView } = useAnimatedInView();
   return (
     <>
       <Box {...fullBox}>
         <HStack justifyContent={"space-between"} flexDirection={"row"}>
-          <Text {...topText}>GET IN TOUCH</Text>
+          <MotionText
+            {...topText}
+            ref={textRef}
+            initial={{ opacity: 0, x: -50 }}
+            animate={
+              isTextInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }
+            }
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
+            GET IN TOUCH
+          </MotionText>
           <Image
             src={Logo}
             width={{ base: "200px", md: "300px", lg: "300px", xl: "400px" }}

@@ -127,7 +127,7 @@ const ScheduleDetails = () => {
               fontSize={{ base: "sm", md: "md", lg: "lg" }}
               ml={{ base: 5, md: 10, lg: 20 }}
             >
-              No data available for this day.
+              No workout scheduled.
             </Text>
           )}
         </GridItem>

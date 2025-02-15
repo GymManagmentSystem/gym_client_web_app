@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem, Text } from "@chakra-ui/react";
+import { Grid, GridItem, Text } from "@chakra-ui/react";
 import Footer from "../components/Footer";
 import HomeHeader from "../components/Home/HomeHeader";
 import PaymentHistoryTable from "../components/Payments/PaymentHistoryTable";
@@ -67,17 +67,17 @@ const Payments = () => {
           <MotionText
             ref={textRef}
             sx={titleText}
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: -50 }}
             animate={
-              isTextInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }
+              isTextInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }
             }
             transition={{ duration: 1, ease: "easeOut" }}
-          >Payments</MotionText>
+          >
+            Payments
+          </MotionText>
           <Text sx={subText}>Your Payment History</Text>
           <PaymentHistoryTable paymentDetails={paymentList} />
-          <Box mt={{ base: 3, lg: 5 }} mb={{ base: 2, lg: 5 }}>
-            <HorizontalBar />
-          </Box>
+          <HorizontalBar />
         </GridItem>
         <GridItem pl="2" area={"footer"} left="0" width="100%" padding="0">
           <Footer />

@@ -92,7 +92,7 @@ const ExerciseCard = ({
 
         <CardBody flex="1" p={4}>
           <Stack spacing="3">
-            <Heading size="md" color="#F1B900" isTruncated>
+            <Heading size="md" color="#F1B900" alignSelf={'center'} isTruncated>
               {name}
             </Heading>
             <HStack color="#000">

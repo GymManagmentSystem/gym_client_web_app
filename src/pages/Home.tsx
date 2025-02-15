@@ -83,9 +83,7 @@ const Home = () => {
           <ProgressChart />
           <MySchedule />
           <CalculateBMI />
-          <Box mt={{ base: 3, lg: 5 }} mb={{ base: 2, lg: 5 }}>
-            <HorizontalBar />
-          </Box>
+          <HorizontalBar/>
         </GridItem>
 
         <GridItem pl="2" area={"footer"} left="0" width="100%" padding="0">

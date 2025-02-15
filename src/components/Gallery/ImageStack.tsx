@@ -36,46 +36,22 @@ const ImageStack = () => {
 
   return (
     <>
-      <Box
-        position="relative"
-        width="100%"
-        height={{ lg: "90vh" }}
-        overflow="hidden"
-        mt={5}
-      >
+      <Box sx={imageContainer}>
         <Image
           src={images[currentImageIndex]}
-          width="100%"
-          height="100%"
-          objectFit="cover"
-          _hover={{ opacity: "0.7", cursor: "pointer" }}
           onClick={onOpen}
+          sx={imageStyles}
         />
 
         {/* Left Arrow */}
-        <Icon
-          as={ArrowLeftIcon}
-          position="absolute"
-          left="3%"
-          top="50%"
-          onClick={prevImage}
-          color="#fff"
-          boxSize={{ base: 5, md: 8, lg: 10 }}
-          cursor="pointer"
-          _hover={{ color: "#F1B900" }}
-        />
+        <Icon as={ArrowLeftIcon} onClick={prevImage} sx={arrowIcon} left="3%" />
 
         {/* Right Arrow */}
         <Icon
           as={ArrowRightIcon}
-          position="absolute"
-          right="3%"
-          top="50%"
           onClick={nextImage}
-          color="#fff"
-          boxSize={{ base: 5, md: 8, lg: 10 }}
-          cursor="pointer"
-          _hover={{ color: "#F1B900" }}
+          sx={arrowIcon}
+          right="3%"
         />
       </Box>
 
@@ -86,11 +62,8 @@ const ImageStack = () => {
           <ModalBody display="flex" alignItems="center" justifyContent="center">
             <Image
               src={images[currentImageIndex]}
-              maxW="90vw"
-              maxH="90vh"
-              objectFit="contain"
               onClick={onClose}
-              _hover={{ cursor: "pointer", opacity: "0.8" }}
+              sx={modalImage}
             />
           </ModalBody>
         </ModalContent>
@@ -99,6 +72,37 @@ const ImageStack = () => {
       <HorizontalBar />
     </>
   );
+};
+
+const imageContainer = {
+  position: "relative",
+  width: "100%",
+  height: { lg: "90vh" },
+  overflow: "hidden",
+  mt: 5,
+};
+
+const imageStyles = {
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+  _hover: { opacity: "0.7", cursor: "pointer" },
+};
+
+const arrowIcon = {
+  position: "absolute",
+  top: "50%",
+  color: "#fff",
+  boxSize: { base: 5, md: 8, lg: 10 },
+  cursor: "pointer",
+  _hover: { color: "#F1B900" },
+};
+
+const modalImage = {
+  maxW: "90vw",
+  maxH: "90vh",
+  objectFit: "contain",
+  _hover: { cursor: "pointer", opacity: "0.8" },
 };
 
 export default ImageStack;

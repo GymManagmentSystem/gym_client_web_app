@@ -23,30 +23,18 @@ const OpenHours = () => {
         justifyContent={"center"}
         spacing={{ md: "10%", lg: "30%" }}
       >
-        <Stack
-          direction={"column"}
-          alignItems={{ base: "center", md: "normal" }}
-        >
+        <Stack sx={unorderListContainer}>
           <Text sx={locationText}>Location : </Text>
-          <UnorderedList
-            sx={listItem}
-            styleType={"none"}
-            lineHeight={{ base: "25px", md: "50px" }}
-          >
+          <UnorderedList sx={listItem} styleType={"none"}>
             <ListItem>MotionZone Fitness Center, </ListItem>
             <ListItem>120/A, Main Road,</ListItem>
             <ListItem>Galle.</ListItem>
           </UnorderedList>
         </Stack>
-        <Stack
-          direction={"column"}
-          alignItems={{ base: "center", md: "normal" }}
-        >
+
+        <Stack sx={unorderListContainer}>
           <Text sx={locationText}>Hours : </Text>
-          <UnorderedList
-            sx={listItem}
-            lineHeight={{ base: "25px", md: "70px" }}
-          >
+          <UnorderedList sx={listItem}>
             <ListItem>
               Monday to Friday:{" "}
               <Text as={"span"} color={"#F1B900"} fontWeight={"medium"}>
@@ -72,6 +60,12 @@ const OpenHours = () => {
     </>
   );
 };
+
+const unorderListContainer = {
+  direction: "column",
+  alignItems: { base: "center", md: "normal" },
+};
+
 const titleText = {
   fontSize: { base: "18px", md: "22px", lg: "30px" },
   fontWeight: "bold",
@@ -88,5 +82,6 @@ const locationText = {
 const listItem = {
   color: "#000",
   fontSize: { base: "12px", md: "20px", lg: "25px" },
+  lineHeight: { base: "25px", md: "50px" },
 };
 export default OpenHours;

@@ -37,29 +37,19 @@ const MembershipPlanData = [
 const PackageCard = () => {
   return (
     <>
-      <Stack direction={"row"} flexWrap={"wrap"} spacing={5} mt={10} justifyContent={'center'}>
+      <Stack
+        direction={"row"}
+        flexWrap={"wrap"}
+        spacing={5}
+        mt={10}
+        justifyContent={"center"}
+      >
         {MembershipPlanData.map((membershipPlan, index) => (
-          <Card
-            key={index}
-            w={{ base: "80%", md: "35%" ,lg:'30%'}}
-            justifyContent={"center"}
-            bg={"#fff"}
-            borderBottomWidth={3}
-            borderTopWidth={1}
-            borderLeftWidth={3}
-            borderRightWidth={3}
-            borderColor={"#E6E6E5"}
-            borderRadius={'25px'}
-          >
+          <Card key={index} sx={cardContainer}>
             <CardHeader sx={cardheader} pb={0}>
               {membershipPlan.packageName}
             </CardHeader>
-            <CardBody
-              sx={cardText}
-              alignItems={"center"}
-              justifyContent={"center"}
-              lineHeight={2}
-            >
+            <CardBody sx={cardText}>
               <Text>{membershipPlan.packageAmount}</Text>
               <Text>{membershipPlan.validTimePeriod}</Text>
               <Text>{membershipPlan.packageDescription}</Text>
@@ -67,9 +57,21 @@ const PackageCard = () => {
           </Card>
         ))}
       </Stack>
-      <HorizontalBar/>
+      <HorizontalBar />
     </>
   );
+};
+
+const cardContainer = {
+  w: { base: "80%", md: "35%", lg: "30%" },
+  justifyContent: "center",
+  bg: "#fff",
+  borderBottomWidth: 3,
+  borderTopWidth: 1,
+  borderLeftWidth: 3,
+  borderRightWidth: 3,
+  borderColor: "#E6E6E5",
+  borderRadius: "25px",
 };
 
 const cardheader = {
@@ -83,6 +85,9 @@ const cardText = {
   color: "#000",
   fontSize: { base: "12px", md: "16px", lg: "20px" },
   textAlign: "center",
+  alignItems: "center",
+  justifyContent: "center",
+  lineHeight: 2,
 };
 
 export default PackageCard;

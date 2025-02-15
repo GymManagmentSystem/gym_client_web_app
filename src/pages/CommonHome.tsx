@@ -35,7 +35,7 @@ const CommonHome = () => {
       gridTemplateRows={"100px 1fr"}
       gridTemplateColumns={"1fr"}
       height={"auto"}
-      overflow={'hidden'}
+      overflow={"hidden"}
     >
       <GridItem
         pl="2"

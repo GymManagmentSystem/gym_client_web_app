@@ -32,24 +32,8 @@ const Benifits = () => {
 
       {/* Card 1 */}
       <Box bg={"#fff"}>
-        <MotionText
-          ref={card1Ref}
-          sx={cardTittle}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isCard1InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 2, ease: "easeOut" }}
-        >
-          Improving Physical Health & Fitness
-        </MotionText>
-        <Stack
-          display={"flex"}
-          flexDirection={{ base: "column", md: "row" }}
-          justify="space-between"
-          align="stretch"
-          spacing={{ base: 5, md: 10, lg: 0 }}
-          pl={10}
-          pr={10}
-        >
+        <Text sx={cardTittle}>Improving Physical Health & Fitness</Text>
+        <Stack sx={cardBody} spacing={{ base: 5, md: 10, lg: 0 }}>
           <Flex flex={1} justifyContent={"center"}>
             <MotionImage
               ref={image1Ref}
@@ -88,24 +72,8 @@ const Benifits = () => {
 
       {/* Card 2 */}
       <Box bg={"#fff"}>
-        <MotionText
-          ref={card2Ref}
-          sx={cardTittle}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isCard2InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 2, ease: "easeOut" }}
-        >
-          Improving Mental Health
-        </MotionText>
-        <Stack
-          display={"flex"}
-          flexDirection={{ base: "column", md: "row" }}
-          justify="space-between"
-          align="stretch"
-          spacing={{ base: 5, md: 10, lg: 0 }}
-          pl={10}
-          pr={10}
-        >
+        <Text sx={cardTittle}>Improving Mental Health</Text>
+        <Stack sx={cardBody} spacing={{ base: 5, md: 10, lg: 0 }}>
           <Flex flex={1} align={"center"}>
             <MotionText
               ref={card2Ref}
@@ -126,7 +94,7 @@ const Benifits = () => {
           </Flex>
           <Flex flex={1} justifyContent={"center"}>
             <MotionImage
-            ref={image2Ref}
+              ref={image2Ref}
               src={b2Image}
               width={{ base: "100%", lg: "50%" }}
               objectFit="cover"
@@ -143,27 +111,11 @@ const Benifits = () => {
 
       {/* Card 3 */}
       <Box bg={"#fff"}>
-        <MotionText
-          ref={card3Ref}
-          sx={cardTittle}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isCard3InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 2, ease: "easeOut" }}
-        >
-          Enhancing Long-Term Health
-        </MotionText>
-        <Stack
-          display={"flex"}
-          flexDirection={{ base: "column", md: "row" }}
-          justify="space-between"
-          align="stretch"
-          spacing={{ base: 5, md: 10, lg: 0 }}
-          pl={10}
-          pr={10}
-        >
+        <Text sx={cardTittle}>Enhancing Long-Term Health</Text>
+        <Stack sx={cardBody} spacing={{ base: 5, md: 10, lg: 0 }}>
           <Flex flex={1} justifyContent={"center"}>
             <MotionImage
-            ref={image3Ref}
+              ref={image3Ref}
               src={b3Image}
               width={{ base: "100%", lg: "50%" }}
               objectFit="cover"
@@ -194,7 +146,7 @@ const Benifits = () => {
       </Box>
 
       <HorizontalBar />
-      </>
+    </>
   );
 };
 
@@ -217,5 +169,13 @@ const cardSubText = {
   color: "#000",
   fontSize: { base: "12px", md: "20px", lg: "25px" },
   textAlign: "justify",
+};
+const cardBody = {
+  display: "flex",
+  flexDirection: { base: "column", md: "row" },
+  justify: "space-between",
+  align: "stretch",
+  pl: 10,
+  pr: 10,
 };
 export default Benifits;

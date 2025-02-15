@@ -108,6 +108,6 @@ const titleText = {
 const subText = {
   color: "#000",
   fontSize: { base: "12px", md: "20px", lg: "25px" },
-  textAlign:{base:'justify',md:'center'},
+  textAlign: { base: "justify", md: "center" },
 };
 export default TopText;

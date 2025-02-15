@@ -1,33 +1,28 @@
-import {
-  Box,
-  Card,
-  CardBody,
-  Heading,
-  Image,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import { Card, CardBody, Heading, Image, Stack, Text } from "@chakra-ui/react";
 import ExpertImage from "../../assets/expert.png";
 import HorizontalBar from "../HorizontalBar";
+
 
 const experts = [
   {
     name: "Darshana Abeywela",
-    specialty: "Specializing in strength training and conditioning",
+    specialty: "Instructor",
   },
   {
     name: "Sahan Weerasinghe",
-    specialty: "Yoga and Pilates Instructor with over 10 years of experience",
+    specialty: "Instructor",
   },
   {
     name: "Kamal Ranasinghe",
-    specialty: "CrossFit Level 2 Trainer and HIIT Specialist",
+    specialty: "Instructor",
   },
 ];
 
 const ExpertDetails = () => {
+ 
+
   return (
-    <Box>
+    <>
       <Text sx={subText}>Meet a few of our experts</Text>
       <Stack
         flexDirection={{ base: "column", md: "row" }}
@@ -44,6 +39,13 @@ const ExpertDetails = () => {
             alignItems="center"
             bg="#fff"
             p={2}
+            ml={{ base: 2 }}
+            borderBottomWidth={3}
+            borderTopWidth={1}
+            borderLeftWidth={3}
+            borderRightWidth={3}
+            borderColor={"#E6E6E5"}
+            borderRadius={'25px'}
           >
             <CardBody
               display="flex"
@@ -60,8 +62,8 @@ const ExpertDetails = () => {
           </Card>
         ))}
       </Stack>
-      <HorizontalBar/>
-    </Box>
+      <HorizontalBar />
+    </>
   );
 };
 

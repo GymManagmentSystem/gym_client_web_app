@@ -75,8 +75,8 @@ const {ref:textRef,isInView:isTextInView} = useAnimatedInView();
       <MotionText
         ref={textRef}
         sx={titleText}
-        initial={{ opacity: 0, x: 50 }}
-        animate={isTextInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+        initial={{ opacity: 0, x: -50 }}
+        animate={isTextInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
         Today Schedule

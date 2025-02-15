@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem, SimpleGrid, Stack, Text } from "@chakra-ui/react";
+import {  Grid, GridItem, SimpleGrid, Stack, Text } from "@chakra-ui/react";
 import HomeHeader from "../components/Home/HomeHeader";
 import Footer from "../components/Footer";
 import ExerciseCard from "../components/Exercises/ExerciseCard";
@@ -94,9 +94,9 @@ const Exercises = () => {
           <MotionText
             ref={textRef}
             sx={titleText}
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: -50 }}
             animate={
-              isTextInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }
+              isTextInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }
             }
             transition={{ duration: 1, ease: "easeOut" }}
           >
@@ -134,9 +134,7 @@ const Exercises = () => {
               )}
             </SimpleGrid>
           </Stack>
-          <Box mt={{ base: 3, lg: 5 }} mb={{ base: 2, lg: 5 }}>
-            <HorizontalBar />
-          </Box>
+          <HorizontalBar/>
         </GridItem>
         <GridItem pl="2" area={"footer"} left="0" width="100%" padding="0">
           <Footer />

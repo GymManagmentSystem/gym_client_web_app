@@ -14,7 +14,7 @@ export interface Props {
 const WeekScheduleCard = ({ weekNo, days }: Props) => {
   const navigate = useNavigate();
 
-  const handleOnClick = (dayNo:number) => {
+  const handleOnClick = (dayNo: number) => {
     navigate(`/scheduleDetails/${weekNo}/${dayNo}`);
   };
   return (
@@ -44,7 +44,12 @@ const WeekScheduleCard = ({ weekNo, days }: Props) => {
         <CardBody overflow={"auto"}>
           <Stack spacing={{ base: 1, md: 5 }} flexDirection={{ base: "row" }}>
             {days.map(({ dayNo, scheduleType }) => (
-              <Box key={dayNo} sx={dayBoxStyles} onClick={()=>handleOnClick(dayNo)} cursor={'pointer'}>
+              <Box
+                key={dayNo}
+                sx={dayBoxStyles}
+                onClick={() => handleOnClick(dayNo)}
+                cursor={"pointer"}
+              >
                 <Text sx={dayTextStyles}>Day {dayNo}</Text>
                 <Text sx={dayTextStyles}>{scheduleType}</Text>
                 <Box sx={checkIconStyles}>
@@ -80,6 +85,12 @@ const dayBoxStyles = {
   alignItems: "center",
   justifyContent: "center",
   p: 2,
+  transition: "all 0.3s ease-in-out",
+  _hover: {
+    bg: "#5C5C5C",
+    transform: "scale(1.05)",
+    boxShadow: "md",
+  },
 };
 
 const dayTextStyles = {

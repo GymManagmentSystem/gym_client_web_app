@@ -6,26 +6,28 @@ import useAnimatedInView from "../../hooks/useAnimatedInView";
 const MotionText = motion.create(Text);
 
 const TopText = () => {
-  const { ref: textRef, isInView: isTextInView } = useAnimatedInView();
-  const { ref: subtextRef, isInView: isSubtextInView } = useAnimatedInView();
+  const { ref: titleRef, isInView: isTitleInView } = useAnimatedInView();
+  const { ref: subtext1Ref, isInView: isSubtext1InView } = useAnimatedInView();
+  const { ref: subtext2Ref, isInView: isSubtext2InView } = useAnimatedInView();
+  const { ref: subtext3Ref, isInView: isSubtext3InView } = useAnimatedInView();
 
   return (
     <Box pl={10} pr={10}>
       <MotionText
-        ref={textRef}
+        ref={titleRef}
         sx={titleText}
         initial={{ opacity: 0, x: 50 }}
-        animate={isTextInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+        animate={isTitleInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
         Welcome to MotionZone
       </MotionText>
       <MotionText
-        ref={subtextRef}
+        ref={subtext1Ref}
         sx={subText}
         initial={{ opacity: 0, scale: 0.5 }} // Start small and invisible
         animate={
-          isSubtextInView
+          isSubtext1InView
             ? { opacity: 1, scale: 1 }
             : { opacity: 0, scale: 0.5 }
         } // Gradually becomes visible and normal size
@@ -40,20 +42,20 @@ const TopText = () => {
       <HorizontalBar />
 
       <MotionText
-        ref={textRef}
+        ref={titleRef}
         sx={titleText}
         initial={{ opacity: 0, x: 50 }}
-        animate={isTextInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+        animate={isTitleInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
         Our Mission
       </MotionText>
       <MotionText
-        ref={subtextRef}
+        ref={subtext2Ref}
         sx={subText}
         initial={{ opacity: 0, scale: 0.5 }} // Start small and invisible
         animate={
-          isSubtextInView
+          isSubtext2InView
             ? { opacity: 1, scale: 1 }
             : { opacity: 0, scale: 0.5 }
         } // Gradually becomes visible and normal size
@@ -67,20 +69,20 @@ const TopText = () => {
       <HorizontalBar />
 
       <MotionText
-        ref={textRef}
+        ref={titleRef}
         sx={titleText}
         initial={{ opacity: 0, x: 50 }}
-        animate={isTextInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+        animate={isTitleInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
         Expert Trainers
       </MotionText>
       <MotionText
-        ref={subtextRef}
+        ref={subtext3Ref}
         sx={subText}
         initial={{ opacity: 0, scale: 0.5 }} // Start small and invisible
         animate={
-          isSubtextInView
+          isSubtext3InView
             ? { opacity: 1, scale: 1 }
             : { opacity: 0, scale: 0.5 }
         } // Gradually becomes visible and normal size
@@ -91,7 +93,7 @@ const TopText = () => {
         improve endurance, or enhance flexibility, our trainers will craft
         personalized programs tailored to your needs.
       </MotionText>
-      <HorizontalBar/>
+      <HorizontalBar />
     </Box>
   );
 };
@@ -106,6 +108,6 @@ const titleText = {
 const subText = {
   color: "#000",
   fontSize: { base: "12px", md: "20px", lg: "25px" },
-  textAlign: "center",
+  textAlign:{base:'justify',md:'center'},
 };
 export default TopText;

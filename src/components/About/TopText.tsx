@@ -16,8 +16,8 @@ const TopText = () => {
       <MotionText
         ref={titleRef}
         sx={titleText}
-        initial={{ opacity: 0, x: 50 }}
-        animate={isTitleInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+        initial={{ opacity: 0, x: -50 }}
+        animate={isTitleInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
         Welcome to MotionZone
@@ -44,8 +44,8 @@ const TopText = () => {
       <MotionText
         ref={titleRef}
         sx={titleText}
-        initial={{ opacity: 0, x: 50 }}
-        animate={isTitleInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+        initial={{ opacity: 0, x: -50 }}
+        animate={isTitleInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
         Our Mission
@@ -71,8 +71,8 @@ const TopText = () => {
       <MotionText
         ref={titleRef}
         sx={titleText}
-        initial={{ opacity: 0, x: 50 }}
-        animate={isTitleInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+        initial={{ opacity: 0, x: -50 }}
+        animate={isTitleInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
         Expert Trainers

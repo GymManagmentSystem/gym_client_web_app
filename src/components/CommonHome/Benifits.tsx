@@ -19,11 +19,11 @@ const Benifits = () => {
   const { ref: image3Ref, isInView: isImage3InView } = useAnimatedInView();
 
   return (
-    <Box>
+    <>
       <MotionText
         ref={titleRef}
         sx={titleText}
-        initial={{ opacity: 0, x: 50 }}
+        initial={{ opacity: 0, x: -50 }}
         animate={isTitleInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
@@ -194,7 +194,7 @@ const Benifits = () => {
       </Box>
 
       <HorizontalBar />
-    </Box>
+      </>
   );
 };
 

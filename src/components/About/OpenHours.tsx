@@ -1,10 +1,23 @@
-import { Box, ListItem, Stack, Text, UnorderedList } from "@chakra-ui/react";
+import { ListItem, Stack, Text, UnorderedList } from "@chakra-ui/react";
 import HorizontalBar from "../HorizontalBar";
+import { motion } from "framer-motion";
+import useAnimatedInView from "../../hooks/useAnimatedInView";
+
+const MotionText = motion.create(Text);
 
 const OpenHours = () => {
+  const { ref: textRef, isInView: isTextInView } = useAnimatedInView();
   return (
-    <Box>
-      <Text sx={titleText}>Convenient Location & Hours</Text>
+    <>
+      <MotionText
+        ref={textRef}
+        sx={titleText}
+        initial={{ opacity: 0, x: -50 }}
+        animate={isTextInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
+        Convenient Location & Hours
+      </MotionText>
       <Stack
         direction={{ base: "column", md: "row" }}
         justifyContent={"center"}
@@ -15,7 +28,11 @@ const OpenHours = () => {
           alignItems={{ base: "center", md: "normal" }}
         >
           <Text sx={locationText}>Location : </Text>
-          <UnorderedList sx={listItem} styleType={"none"}>
+          <UnorderedList
+            sx={listItem}
+            styleType={"none"}
+            lineHeight={{ base: "25px", md: "50px" }}
+          >
             <ListItem>MotionZone Fitness Center, </ListItem>
             <ListItem>120/A, Main Road,</ListItem>
             <ListItem>Galle.</ListItem>
@@ -26,7 +43,10 @@ const OpenHours = () => {
           alignItems={{ base: "center", md: "normal" }}
         >
           <Text sx={locationText}>Hours : </Text>
-          <UnorderedList sx={listItem} lineHeight={"70px"}>
+          <UnorderedList
+            sx={listItem}
+            lineHeight={{ base: "25px", md: "70px" }}
+          >
             <ListItem>
               Monday to Friday:{" "}
               <Text as={"span"} color={"#F1B900"} fontWeight={"medium"}>
@@ -49,7 +69,7 @@ const OpenHours = () => {
         </Stack>
       </Stack>
       <HorizontalBar />
-    </Box>
+    </>
   );
 };
 const titleText = {

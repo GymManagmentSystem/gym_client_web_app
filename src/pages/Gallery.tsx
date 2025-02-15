@@ -1,8 +1,8 @@
 import { Grid, GridItem } from "@chakra-ui/react";
-import CommonHeader from "../components/About/CommonHeader";
 import CommonClientFooter from "../components/CommonClientFooter";
 import TextDescription from "../components/Gallery/TextDescription";
 import ImageStack from "../components/Gallery/ImageStack";
+import CommonHomeHeader from "../components/CommonHome/CommonHomeHeader";
 
 const Gallery = () => {
   return (
@@ -22,7 +22,7 @@ const Gallery = () => {
         width="100%"
         zIndex="10"
       >
-        <CommonHeader />
+        <CommonHomeHeader />
       </GridItem>
       <GridItem
         pl="2"

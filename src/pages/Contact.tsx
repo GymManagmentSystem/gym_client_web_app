@@ -1,6 +1,6 @@
 import { Grid, GridItem } from "@chakra-ui/react";
-import CommonHeader from "../components/About/CommonHeader";
 import CommonClientFooter from "../components/CommonClientFooter";
+import CommonHomeHeader from "../components/CommonHome/CommonHomeHeader";
 
 const Contact = () => {
   return (
@@ -20,7 +20,7 @@ const Contact = () => {
         width="100%"
         zIndex="10"
       >
-        <CommonHeader/>
+        <CommonHomeHeader />
       </GridItem>
       <GridItem
         pl="2"
@@ -33,7 +33,7 @@ const Contact = () => {
       ></GridItem>
 
       <GridItem pl="2" area={"footer"} left="0" width="100%" padding="0">
-        <CommonClientFooter/>
+        <CommonClientFooter />
       </GridItem>
     </Grid>
   );

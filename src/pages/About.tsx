@@ -1,9 +1,9 @@
 import { Grid, GridItem } from "@chakra-ui/react";
-import CommonHeader from "../components/About/CommonHeader";
 import CommonClientFooter from "../components/CommonClientFooter";
 import TopText from "../components/About/TopText";
 import ExpertDetails from "../components/About/ExpertDetails";
 import OpenHours from "../components/About/OpenHours";
+import CommonHomeHeader from "../components/CommonHome/CommonHomeHeader";
 
 const About = () => {
   return (
@@ -23,7 +23,7 @@ const About = () => {
         width="100%"
         zIndex="10"
       >
-        <CommonHeader />
+        <CommonHomeHeader />
       </GridItem>
       <GridItem
         pl="2"

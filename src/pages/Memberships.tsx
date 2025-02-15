@@ -1,8 +1,8 @@
 import { Grid, GridItem } from "@chakra-ui/react";
-import CommonHeader from "../components/About/CommonHeader";
 import CommonClientFooter from "../components/CommonClientFooter";
 import TopTextDescription from "../components/Memberships/TopTextDescription";
 import PackageCard from "../components/Memberships/PackageCard";
+import CommonHomeHeader from "../components/CommonHome/CommonHomeHeader";
 
 const Memberships = () => {
   return (
@@ -22,7 +22,7 @@ const Memberships = () => {
         width="100%"
         zIndex="10"
       >
-        <CommonHeader/>
+        <CommonHomeHeader />
       </GridItem>
       <GridItem
         pl="2"
@@ -33,12 +33,12 @@ const Memberships = () => {
         padding="0"
         bg="#fff"
       >
-        <TopTextDescription/>
-        <PackageCard/>
+        <TopTextDescription />
+        <PackageCard />
       </GridItem>
 
       <GridItem pl="2" area={"footer"} left="0" width="100%" padding="0">
-        <CommonClientFooter/>
+        <CommonClientFooter />
       </GridItem>
     </Grid>
   );

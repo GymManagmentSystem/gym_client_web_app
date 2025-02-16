@@ -2,9 +2,11 @@ import { Grid, GridItem, Text } from "@chakra-ui/react";
 import Footer from "../components/Footer";
 import HomeHeader from "../components/Home/HomeHeader";
 import ScheduleDetailsCard from "../components/ScheduleDetails/ScheduleDetailsCard";
-
+import { motion } from "framer-motion";
+import useAnimatedInView from "../hooks/useAnimatedInView";
 import { useParams } from "react-router-dom";
 
+const MotionText = motion.create(Text);
 const ScheduleDetails = () => {
   const { weekNo, dayNo } = useParams<{ weekNo: string; dayNo: string }>();
 
@@ -78,6 +80,9 @@ const ScheduleDetails = () => {
       item.weekNo === parseInt(weekNo || "0") &&
       item.dayNo === parseInt(dayNo || "0")
   );
+
+  const { ref: textRef, isInView: isTextInView } = useAnimatedInView();
+
   return (
     <>
       <Grid
@@ -108,7 +113,18 @@ const ScheduleDetails = () => {
           padding="0"
           bg="#fff"
         >
-          <Text {...titleText}>Current Schedule</Text>
+          <MotionText
+            ref={textRef}
+            {...titleText}
+            initial={{ opacity: 0, x: -50 }}
+            animate={
+              isTextInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }
+            }
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
+            Current Schedule
+          </MotionText>
+
           {filteredData.length > 0 ? (
             <ScheduleDetailsCard
               key={dayNo}

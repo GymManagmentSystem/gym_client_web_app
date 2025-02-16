@@ -8,6 +8,7 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { Card, CardBody } from "@chakra-ui/react";
+import HorizontalBar from "../HorizontalBar";
 
 interface CardData {
   image: string;
@@ -28,30 +29,9 @@ const ScheduleDetailsCard = ({ weekNo, dayNo, cardData }: Props) => {
       <Text {...dayText}>
         Week {weekNo} - Day {dayNo}
       </Text>
-      <Stack
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        maxW="100%"
-        overflow="hidden"
-        flexDirection={{ base: "column", md: "row" }}
-        flexWrap="wrap"
-      >
+      <Stack sx={mainContainer}>
         {cardData.map(({ image, name, sets, reps }) => (
-          <Card
-            key={name}
-            overflow="hidden"
-            variant="outline"
-            borderRadius="15px"
-            bg="#fff"
-            border="2px"
-            borderColor="#E6E6E5"
-            boxShadow="lg"
-            w={{ base: "80%", md: "25%", lg: "22%" }}
-            minW="250px"
-            mx={2}
-            my={2}
-          >
+          <Card key={name} sx={cardContainer}>
             <Box>
               <Center height="200px">
                 <Image
@@ -66,9 +46,15 @@ const ScheduleDetailsCard = ({ weekNo, dayNo, cardData }: Props) => {
                 <CardBody>
                   <HStack spacing={4} justify="space-between">
                     <VStack align="start">
-                      <Text {...bodytextStyles}>Exercise</Text>
-                      <Text {...bodytextStyles}>No of sets</Text>
-                      <Text {...bodytextStyles}>No of reps</Text>
+                      <Text {...bodytextStyles} fontWeight={"semibold"}>
+                        Exercise
+                      </Text>
+                      <Text {...bodytextStyles} fontWeight={"semibold"}>
+                        No of sets
+                      </Text>
+                      <Text {...bodytextStyles} fontWeight={"semibold"}>
+                        No of reps
+                      </Text>
                     </VStack>
 
                     <VStack align="start">
@@ -82,11 +68,38 @@ const ScheduleDetailsCard = ({ weekNo, dayNo, cardData }: Props) => {
             </Box>
           </Card>
         ))}
+        <HorizontalBar />
       </Stack>
     </>
   );
 };
-
+const mainContainer = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  maxW: "100%",
+  overflow: "hidden",
+  flexDirection: { base: "column", md: "row" },
+  flexWrap: "wrap",
+};
+const cardContainer = {
+  overflow: "hidden",
+  variant: "outline",
+  borderRadius: "15px",
+  bg: "#fff",
+  border: "2px",
+  borderColor: "#E6E6E5",
+  boxShadow: "lg",
+  w: { base: "80%", md: "25%", lg: "22%" },
+  minW: "250px",
+  mx: 2,
+  my: 2,
+  _hover: {
+    boxShadow: "xl",
+    transform: "scale(1.02)",
+    transition: "transform 0.2s ease, box-shadow 0.2s ease",
+  },
+};
 const dayText = {
   color: "#000",
   fontSize: { base: "sm", md: "md", lg: "lg" },

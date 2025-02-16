@@ -48,32 +48,14 @@ const ExerciseCard = ({
 }: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const {ref:imageRef,isInView:isImageInView} = useAnimatedInView();
+  const { ref: imageRef, isInView: isImageInView } = useAnimatedInView();
   return (
-    <Card
-      maxW="md"
-      height={{ base: "auto", md: "500px" }}
-      borderRadius="15px"
-      bg="#fff"
-      border="1px"
-      borderColor="#E6E6E5"
-      boxShadow="lg"
-      _hover={{
-        boxShadow: "xl",
-        transform: "scale(1.02)",
-        transition: "transform 0.2s ease, box-shadow 0.2s ease",
-      }}
-    >
+    <Card sx={cardContainer}>
       <VStack height="100%" spacing={0} align="stretch">
-        <Box
-          flex={{ base: "auto", md: "2" }}
-          overflow="hidden"
-          width="100%"
-          height={{ base: "200px", md: "250px" }}
-        >
+        <Box sx={imageContainer}>
           <Center height="100%">
             <MotionImage
-             ref={imageRef}
+              ref={imageRef}
               src={image}
               height="100%"
               width="100%"
@@ -92,7 +74,7 @@ const ExerciseCard = ({
 
         <CardBody flex="1" p={4}>
           <Stack spacing="3">
-            <Heading size="md" color="#F1B900" alignSelf={'center'} isTruncated>
+            <Heading size="md" color="#F1B900" alignSelf={"center"} isTruncated>
               {name}
             </Heading>
             <HStack color="#000">
@@ -142,7 +124,7 @@ const ExerciseCard = ({
           <Button
             variant="solid"
             bg="#F1B900"
-            _hover={{ bg: "#FFD035", color: "#000" }}
+            _hover={{ bg: "#FFD035" }}
             onClick={onOpen}
           >
             View More
@@ -159,7 +141,7 @@ const ExerciseCard = ({
         <ModalOverlay />
         <ModalContent bg="#fff" ml={3} mr={3}>
           <ModalHeader color="#000" fontWeight="bold" fontSize={"md"}>
-          Exercise Description
+            Exercise Description
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
@@ -175,7 +157,7 @@ const ExerciseCard = ({
             <Button
               variant="solid"
               bg="#F1B900"
-              _hover={{ bg: "#FFD035", color: "#000" }}
+              _hover={{ bg: "#FFD035" }}
               onClick={onClose}
             >
               Close
@@ -196,5 +178,24 @@ const valueText = {
   color: "#000",
   fontSize: { base: "12px", md: "14px", lg: "16px" },
 };
-
+const cardContainer = {
+  maxW: "md",
+  height: { base: "auto", md: "500px" },
+  borderRadius: "15px",
+  bg: "#fff",
+  border: "1px",
+  borderColor: "#E6E6E5",
+  boxShadow: "lg",
+  _hover: {
+    boxShadow: "xl",
+    transform: "scale(1.02)",
+    transition: "transform 0.2s ease, box-shadow 0.2s ease",
+  },
+};
+const imageContainer = {
+  flex: { base: "auto", md: "2" },
+  overflow: "hidden",
+  width: "100%",
+  height: { base: "200px", md: "250px" },
+};
 export default ExerciseCard;

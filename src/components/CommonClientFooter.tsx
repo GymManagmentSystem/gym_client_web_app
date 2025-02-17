@@ -95,20 +95,20 @@ const CommonClientFooter = () => {
               mb={8}
               ml={{ md: "30px", lg: "70px" }}
             >
-              <Link to="/commonHome">
+              <Link to="/commonHome" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={topbarNames}>Home</Text>
               </Link>
 
-              <Link to="/about">
+              <Link to="/about" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={topbarNames}>About</Text>
               </Link>
-              <Link to="/memberships">
+              <Link to="/memberships" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={topbarNames}>Memberships</Text>
               </Link>
-              <Link to="/gallery">
+              <Link to="/gallery" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={topbarNames}>Gallery</Text>
               </Link>
-              <Link to="/contact">
+              <Link to="/contact" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={topbarNames}>Contact</Text>
               </Link>
             </VStack>

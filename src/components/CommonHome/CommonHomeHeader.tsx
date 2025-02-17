@@ -8,6 +8,8 @@ const CommonHomeHeader = () => {
   const location = useLocation();
   const navigation = useNavigate();
 
+
+  
   const getFocusStyles = (path: any) => {
     return location.pathname === path ? focusStyles : {};
   };
@@ -15,6 +17,7 @@ const CommonHomeHeader = () => {
   const handleLoginButton =()=>{
     navigation("/login");
   }
+
 
   return (
     <Box bg="#F1B900" width="100%">
@@ -27,27 +30,27 @@ const CommonHomeHeader = () => {
         <HStack {...HstackStyles}>
           <Image {...logo} />
           <HStack spacing={10}>
-            <Link to="/commonHome">
+            <Link to="/commonHome" onClick={() => window.scrollTo(0, 0)}>
               <Text sx={{ ...textStyles, ...getFocusStyles("/commonHome") }}>
                 Home
               </Text>
             </Link>
-            <Link to="/about">
+            <Link to="/about" onClick={() => window.scrollTo(0, 0)}>
               <Text sx={{ ...textStyles, ...getFocusStyles("/about") }}>
                 About
               </Text>
             </Link>
-            <Link to="/memberships">
+            <Link to="/memberships" onClick={() => window.scrollTo(0, 0)}>
               <Text sx={{ ...textStyles, ...getFocusStyles("/memberships") }}>
                 Memberships
               </Text>
             </Link>
-            <Link to="/gallery">
+            <Link to="/gallery" onClick={() => window.scrollTo(0, 0)}>
               <Text sx={{ ...textStyles, ...getFocusStyles("/gallery") }}>
                 Gallery
               </Text>
             </Link>
-            <Link to="/contact">
+            <Link to="/contact" onClick={() => window.scrollTo(0, 0)}>
               <Text sx={{ ...textStyles, ...getFocusStyles("/contact") }}>
                 Contact
               </Text>

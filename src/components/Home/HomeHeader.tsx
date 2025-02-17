@@ -23,23 +23,23 @@ const HomeHeader = () => {
           <Image {...logo} />
 
           <HStack spacing={10}>
-            <Link to="/home">
+            <Link to="/home" onClick={() => window.scrollTo(0, 0)}>
               <Text sx={{ ...textStyles, ...getFocusStyles("/home") }}>
                 Home
               </Text>
             </Link>
 
-            <Link to="/exercises">
+            <Link to="/exercises" onClick={() => window.scrollTo(0, 0)}>
               <Text sx={{ ...textStyles, ...getFocusStyles("/exercises") }}>
                 Exercises
               </Text>
             </Link>
-            <Link to="/schedule">
+            <Link to="/schedule" onClick={() => window.scrollTo(0, 0)}>
               <Text sx={{ ...textStyles, ...getFocusStyles("/schedule") }}>
                 Schedule
               </Text>
             </Link>
-            <Link to="/payments">
+            <Link to="/payments" onClick={() => window.scrollTo(0, 0)}>
               <Text sx={{ ...textStyles, ...getFocusStyles("/payments") }}>
                 Payments
               </Text>

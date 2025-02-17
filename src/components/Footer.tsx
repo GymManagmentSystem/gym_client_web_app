@@ -95,17 +95,17 @@ const Footer = () => {
               mb={8}
               ml={{ md: "30px", lg: "70px" }}
             >
-              <Link to="/home">
+              <Link to="/home" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={topbarNames}>Home</Text>
               </Link>
 
-              <Link to="/exercises">
+              <Link to="/exercises" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={topbarNames}>Exercises</Text>
               </Link>
-              <Link to="/schedule">
+              <Link to="/schedule" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={topbarNames}>Schedule</Text>
               </Link>
-              <Link to="/payments">
+              <Link to="/payments" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={topbarNames}>Payments</Text>
               </Link>
             </VStack>

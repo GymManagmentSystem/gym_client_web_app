@@ -22,30 +22,20 @@ import {
 } from "@chakra-ui/react";
 import useAnimatedInView from "../../hooks/useAnimatedInView";
 import { motion } from "framer-motion";
+import { Exercises } from "../../hooks/useGetExercise";
 
 const MotionImage = motion.create(Image);
 
-interface Props {
-  image: string;
-  name: string;
-  description: string;
-  type: string;
-  bodyArea: string;
-  exerciseLevel: string;
-  category: string;
-  equipments: string;
-}
-
 const ExerciseCard = ({
-  image,
-  name,
-  description,
-  type,
-  bodyArea,
+  exerciseImageUrl,
+  exerciseName,
+  exerciseDescription,
+  exerciseType,
+  targetBodyArea,
   exerciseLevel,
-  category,
-  equipments,
-}: Props) => {
+  exerciseCategory,
+  exerciseEquipment,
+}: Exercises) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { ref: imageRef, isInView: isImageInView } = useAnimatedInView();
@@ -56,7 +46,7 @@ const ExerciseCard = ({
           <Center height="100%">
             <MotionImage
               ref={imageRef}
-              src={image}
+              src={exerciseImageUrl}
               height="100%"
               width="100%"
               objectFit="contain"
@@ -75,14 +65,14 @@ const ExerciseCard = ({
         <CardBody flex="1" p={4}>
           <Stack spacing="3">
             <Heading size="md" color="#F1B900" alignSelf={"center"} isTruncated>
-              {name}
+              {exerciseName}
             </Heading>
             <HStack color="#000">
               <Text sx={titleText} flex={1}>
                 Exercise Type
               </Text>
               <Text sx={valueText} flex={1}>
-                {type}
+                {exerciseType}
               </Text>
             </HStack>
             <HStack>
@@ -90,7 +80,7 @@ const ExerciseCard = ({
                 Target Body Area
               </Text>
               <Text sx={valueText} flex={1}>
-                {bodyArea}
+                {targetBodyArea}
               </Text>
             </HStack>
             <HStack>
@@ -106,7 +96,7 @@ const ExerciseCard = ({
                 Exercise Category
               </Text>
               <Text sx={valueText} flex={1}>
-                {category}
+                {exerciseCategory}
               </Text>
             </HStack>
             <HStack>
@@ -114,7 +104,7 @@ const ExerciseCard = ({
                 Equipment Required
               </Text>
               <Text sx={valueText} flex={1}>
-                {equipments}
+                {exerciseEquipment}
               </Text>
             </HStack>
           </Stack>
@@ -150,7 +140,7 @@ const ExerciseCard = ({
               color="#000"
               textAlign="justify"
             >
-              {description}
+              {exerciseDescription}
             </Text>
           </ModalBody>
           <ModalFooter>
@@ -181,6 +171,7 @@ const valueText = {
 const cardContainer = {
   maxW: "md",
   height: { base: "auto", md: "500px" },
+  width:{lg:"500px"},
   borderRadius: "15px",
   bg: "#fff",
   border: "1px",

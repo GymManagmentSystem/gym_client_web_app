@@ -52,17 +52,17 @@ const HomeDrawer = () => {
                   }}
                 />
               </Box>
-              <Link to="/home">
+              <Link to="/home" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={textStyles}>Home</Text>
               </Link>
 
-              <Link to="/exercises">
+              <Link to="/exercises" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={textStyles}>Exercises</Text>
               </Link>
-              <Link to="/schedule">
+              <Link to="/schedule" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={textStyles}>Schedule</Text>
               </Link>
-              <Link to="/payments">
+              <Link to="/payments" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={textStyles}>Payments</Text>
               </Link>
             </Stack>

@@ -53,19 +53,19 @@ const LoginDrawer = () => {
                 />
               </Box>
 
-              <Link to="/commonHome">
+              <Link to="/commonHome" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={textStyles}>Home</Text>
               </Link>
-              <Link to="/about">
+              <Link to="/about" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={textStyles}>About</Text>
               </Link>
-              <Link to="/memberships">
+              <Link to="/memberships" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={textStyles}>Memberships</Text>
               </Link>
-              <Link to="/gallery">
+              <Link to="/gallery" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={textStyles}>Gallery</Text>
               </Link>
-              <Link to="/contact">
+              <Link to="/contact" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={textStyles}>Contact</Text>
               </Link>
             </Stack>

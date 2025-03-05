@@ -1,64 +1,68 @@
-import {  Grid, GridItem, SimpleGrid, Stack, Text } from "@chakra-ui/react";
+import { Grid, GridItem, SimpleGrid, Stack, Text } from "@chakra-ui/react";
 import HomeHeader from "../components/Home/HomeHeader";
 import Footer from "../components/Footer";
 import ExerciseCard from "../components/Exercises/ExerciseCard";
 import HorizontalBar from "../components/HorizontalBar";
 import useAnimatedInView from "../hooks/useAnimatedInView";
 import { motion } from "framer-motion";
+import useGetExercise from "../hooks/useGetExercise";
 
 const MotionText = motion.create(Text);
 
 const Exercises = () => {
-  const exerciseData = [
-    {
-      image:
-        "https://apilyfta.com/static/GymvisualPNG/00471101-Barbell-Incline-Bench-Press_Chest_small.png",
-      name: "Bench Press",
-      description:
-        "The bench press is performed by lying on a flat bench with feet firmly on the ground. Grip the barbell with hands slightly wider than shoulder-width apart, lower the bar to your chest, and press it upwards until your arms are fully extended. Repeat for the desired number of reps.",
-      type: "Strength",
-      bodyArea: "Chest",
-      exerciseLevel: "Intermediate",
-      category: "Compound",
-      equipments: "Barbell, Bench",
-    },
-    {
-      image:
-        "https://www.hevyapp.com/wp-content/uploads/02511201-Chest-Dip_Chest.jpg",
-      name: "Chest Dips",
-      description:
-        "Hold onto parallel bars with arms extended, and lean slightly forward while bending your knees if necessary. Lower your body by bending your elbows until your chest is level with your hands, feeling a stretch across your chest. Push yourself back up to the starting position, keeping the movement controlled. Repeat for the desired number of reps.",
-      type: "Strength",
-      bodyArea: "Chest",
-      exerciseLevel: "Advanced",
-      category: "Compound",
-      equipments: "Parallel Bars",
-    },
-    {
-      image:
-        "https://www.lyfta.app/_next/image?url=%2Fthumbnails%2F13111201.jpg&w=3840&q=20",
-      name: "Wide Pushes",
-      description:
-        "Start in a push-up position with hands wider than shoulder-width on the ground. Lower your body by bending the elbows outward until your chest nearly touches the ground, keeping your core tight. Push up through your palms until your arms are fully extended. Repeat for the desired number of reps.",
-      type: "Strength",
-      bodyArea: "Chest",
-      exerciseLevel: "Intermediate",
-      category: "Bodyweight",
-      equipments: "None",
-    },
-    {
-      image:
-        "https://apilyfta.com/static/GymvisualPNG/02271101-Cable-Standing-Fly_Chest-FIX_small.png",
-      name: "Cable Standing Fly",
-      description:
-        "Stand between two cable pulleys with feet shoulder-width apart. Grip the handles with a slight bend in your elbows and arms extended at shoulder height. Pull the handles together in front of your chest in a controlled arc, focusing on contracting your chest muscles. Slowly return to the starting position. Repeat for the desired number of reps",
-      type: "Strength",
-      bodyArea: "Chest",
-      exerciseLevel: "Intermediate",
-      category: "Isolation",
-      equipments: "Cable Machine",
-    },
-  ];
+  const { data: exerciseData } = useGetExercise();
+  console.log(exerciseData);
+
+  // const exerciseData = [
+  //   {
+  //     image:
+  //       "https://apilyfta.com/static/GymvisualPNG/00471101-Barbell-Incline-Bench-Press_Chest_small.png",
+  //     name: "Bench Press",
+  //     description:
+  //       "The bench press is performed by lying on a flat bench with feet firmly on the ground. Grip the barbell with hands slightly wider than shoulder-width apart, lower the bar to your chest, and press it upwards until your arms are fully extended. Repeat for the desired number of reps.",
+  //     type: "Strength",
+  //     bodyArea: "Chest",
+  //     exerciseLevel: "Intermediate",
+  //     category: "Compound",
+  //     equipments: "Barbell, Bench",
+  //   },
+  //   {
+  //     image:
+  //       "https://www.hevyapp.com/wp-content/uploads/02511201-Chest-Dip_Chest.jpg",
+  //     name: "Chest Dips",
+  //     description:
+  //       "Hold onto parallel bars with arms extended, and lean slightly forward while bending your knees if necessary. Lower your body by bending your elbows until your chest is level with your hands, feeling a stretch across your chest. Push yourself back up to the starting position, keeping the movement controlled. Repeat for the desired number of reps.",
+  //     type: "Strength",
+  //     bodyArea: "Chest",
+  //     exerciseLevel: "Advanced",
+  //     category: "Compound",
+  //     equipments: "Parallel Bars",
+  //   },
+  //   {
+  //     image:
+  //       "https://www.lyfta.app/_next/image?url=%2Fthumbnails%2F13111201.jpg&w=3840&q=20",
+  //     name: "Wide Pushes",
+  //     description:
+  //       "Start in a push-up position with hands wider than shoulder-width on the ground. Lower your body by bending the elbows outward until your chest nearly touches the ground, keeping your core tight. Push up through your palms until your arms are fully extended. Repeat for the desired number of reps.",
+  //     type: "Strength",
+  //     bodyArea: "Chest",
+  //     exerciseLevel: "Intermediate",
+  //     category: "Bodyweight",
+  //     equipments: "None",
+  //   },
+  //   {
+  //     image:
+  //       "https://apilyfta.com/static/GymvisualPNG/02271101-Cable-Standing-Fly_Chest-FIX_small.png",
+  //     name: "Cable Standing Fly",
+  //     description:
+  //       "Stand between two cable pulleys with feet shoulder-width apart. Grip the handles with a slight bend in your elbows and arms extended at shoulder height. Pull the handles together in front of your chest in a controlled arc, focusing on contracting your chest muscles. Slowly return to the starting position. Repeat for the desired number of reps",
+  //     type: "Strength",
+  //     bodyArea: "Chest",
+  //     exerciseLevel: "Intermediate",
+  //     category: "Isolation",
+  //     equipments: "Cable Machine",
+  //   },
+  // ];
 
   const { ref: textRef, isInView: isTextInView } = useAnimatedInView();
 
@@ -108,33 +112,35 @@ const Exercises = () => {
               columns={{ base: 1, md: 2, lg: 3 }}
               maxW={"90%"}
             >
-              {exerciseData.map(
-                ({
-                  image,
-                  name,
-                  description,
-                  type,
-                  bodyArea,
-                  exerciseLevel,
-                  category,
-                  equipments,
-                }) => (
-                  <ExerciseCard
-                    key={name}
-                    image={image}
-                    name={name}
-                    description={description}
-                    type={type}
-                    bodyArea={bodyArea}
-                    exerciseLevel={exerciseLevel}
-                    category={category}
-                    equipments={equipments}
-                  />
-                )
-              )}
+              {exerciseData && exerciseData.length > 0
+                ? exerciseData.map(
+                    ({
+                      exerciseImageUrl,
+                      exerciseName,
+                      exerciseDescription,
+                      exerciseType,
+                      targetBodyArea,
+                      exerciseLevel,
+                      exerciseCategory,
+                      exerciseEquipment,
+                    }) => (
+                      <ExerciseCard
+                        key={exerciseName}
+                        exerciseImageUrl={exerciseImageUrl}
+                        exerciseName={exerciseName}
+                        exerciseDescription={exerciseDescription}
+                        exerciseType={exerciseType}
+                        targetBodyArea={targetBodyArea}
+                        exerciseLevel={exerciseLevel}
+                        exerciseCategory={exerciseCategory}
+                        exerciseEquipment={exerciseEquipment}
+                      />
+                    )
+                  )
+                : null}
             </SimpleGrid>
           </Stack>
-          <HorizontalBar/>
+          <HorizontalBar />
         </GridItem>
         <GridItem pl="2" area={"footer"} left="0" width="100%" padding="0">
           <Footer />

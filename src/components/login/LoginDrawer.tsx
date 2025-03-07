@@ -12,11 +12,16 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { PiList } from "react-icons/pi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef<HTMLButtonElement>(null);
+  const navigation = useNavigate();
+
+  const handleLoginButton = () => {
+    navigation("/login");
+  };
 
   return (
     <>
@@ -53,22 +58,55 @@ const LoginDrawer = () => {
                 />
               </Box>
 
-              <Link to="/commonHome" onClick={() => window.scrollTo(0, 0)}>
+              <Link
+                to="/commonHome"
+                onClick={() => {
+                  onClose();
+                  window.scrollTo(0, 0);
+                }}
+              >
                 <Text sx={textStyles}>Home</Text>
               </Link>
-              <Link to="/about" onClick={() => window.scrollTo(0, 0)}>
+              <Link
+                to="/about"
+                onClick={() => {
+                  onClose();
+                  window.scrollTo(0, 0);
+                }}
+              >
                 <Text sx={textStyles}>About</Text>
               </Link>
-              <Link to="/memberships" onClick={() => window.scrollTo(0, 0)}>
+              <Link
+                to="/memberships"
+                onClick={() => {
+                  onClose();
+                  window.scrollTo(0, 0);
+                }}
+              >
                 <Text sx={textStyles}>Memberships</Text>
               </Link>
-              <Link to="/gallery" onClick={() => window.scrollTo(0, 0)}>
+              <Link
+                to="/gallery"
+                onClick={() => {
+                  onClose();
+                  window.scrollTo(0, 0);
+                }}
+              >
                 <Text sx={textStyles}>Gallery</Text>
               </Link>
               {/* <Link to="/contact" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={textStyles}>Contact</Text>
               </Link> */}
             </Stack>
+            <Button
+              {...loginButton}
+              onClick={() => {
+                onClose();
+                handleLoginButton;
+              }}
+            >
+              Login
+            </Button>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
@@ -84,6 +122,15 @@ const textStyles = {
     cursor: "pointer",
     fontWeight: "bold",
   },
+};
+const loginButton = {
+  height: "44px",
+  width: "150px",
+  mt: 10,
+  bg: "#000",
+  color: "#fff",
+  borderRadius: "30px",
+  _hover: { bg: "#FFDD6D", color: "#000", borderRadius: "30px" },
 };
 
 export default LoginDrawer;

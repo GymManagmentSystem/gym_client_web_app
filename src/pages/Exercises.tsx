@@ -114,26 +114,17 @@ const Exercises = () => {
             >
               {exerciseData && exerciseData.length > 0
                 ? exerciseData.map(
-                    ({
-                      exerciseImageUrl,
-                      exerciseName,
-                      exerciseDescription,
-                      exerciseType,
-                      targetBodyArea,
-                      exerciseLevel,
-                      exerciseCategory,
-                      exerciseEquipment,
-                    }) => (
+                    (exerciseDataList,index) => (
                       <ExerciseCard
-                        key={exerciseName}
-                        exerciseImageUrl={exerciseImageUrl}
-                        exerciseName={exerciseName}
-                        exerciseDescription={exerciseDescription}
-                        exerciseType={exerciseType}
-                        targetBodyArea={targetBodyArea}
-                        exerciseLevel={exerciseLevel}
-                        exerciseCategory={exerciseCategory}
-                        exerciseEquipment={exerciseEquipment}
+                        key={index}
+                        exerciseImageUrl={exerciseDataList.exerciseImageUrl}
+                        exerciseName={exerciseDataList.exerciseName}
+                        exerciseDescription={exerciseDataList.exerciseDescription}
+                        exerciseType={exerciseDataList.exerciseType}
+                        targetBodyArea={exerciseDataList.targetBodyArea}
+                        exerciseLevel={exerciseDataList.exerciseLevel}
+                        exerciseCategory={exerciseDataList.exerciseCategory}
+                        exerciseEquipment={exerciseDataList.exerciseEquipment}
                       />
                     )
                   )

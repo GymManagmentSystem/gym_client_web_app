@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 
- interface Exercises {
+ export interface Exercises {
   exerciseImageUrl: string;
   exerciseName: string;
   exerciseDescription: string;

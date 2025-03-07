@@ -108,9 +108,9 @@ const CommonClientFooter = () => {
               <Link to="/gallery" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={topbarNames}>Gallery</Text>
               </Link>
-              <Link to="/contact" onClick={() => window.scrollTo(0, 0)}>
+              {/* <Link to="/contact" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={topbarNames}>Contact</Text>
-              </Link>
+              </Link> */}
             </VStack>
 
             <VStack

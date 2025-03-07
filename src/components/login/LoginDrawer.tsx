@@ -65,9 +65,9 @@ const LoginDrawer = () => {
               <Link to="/gallery" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={textStyles}>Gallery</Text>
               </Link>
-              <Link to="/contact" onClick={() => window.scrollTo(0, 0)}>
+              {/* <Link to="/contact" onClick={() => window.scrollTo(0, 0)}>
                 <Text sx={textStyles}>Contact</Text>
-              </Link>
+              </Link> */}
             </Stack>
           </DrawerBody>
         </DrawerContent>

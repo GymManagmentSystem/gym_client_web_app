@@ -48,11 +48,11 @@ const Header = () => {
                 Gallery
               </Text>
             </Link>
-            <Link to="/contact">
+            {/* <Link to="/contact">
               <Text sx={{ ...textStyles, ...getFocusStyles("/contact") }}>
                 Contact
               </Text>
-            </Link>
+            </Link> */}
           </HStack>
 
          

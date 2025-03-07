@@ -8,7 +8,7 @@ export interface PackageDetails {
   packageAmount: string;
 }
 
-interface SuccessResponse {
+export interface SuccessResponse {
   dataList: PackageDetails[];
 }
 

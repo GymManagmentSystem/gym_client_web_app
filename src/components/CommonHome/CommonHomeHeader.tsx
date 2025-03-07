@@ -50,11 +50,11 @@ const CommonHomeHeader = () => {
                 Gallery
               </Text>
             </Link>
-            <Link to="/contact" onClick={() => window.scrollTo(0, 0)}>
+            {/* <Link to="/contact" onClick={() => window.scrollTo(0, 0)}>
               <Text sx={{ ...textStyles, ...getFocusStyles("/contact") }}>
                 Contact
               </Text>
-            </Link>
+            </Link> */}
           </HStack>
           <Button {...loginButton} onClick={handleLoginButton}>Login</Button>
         </HStack>

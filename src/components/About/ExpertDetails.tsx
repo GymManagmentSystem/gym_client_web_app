@@ -1,38 +1,37 @@
 import { Card, CardBody, Heading, Image, Stack, Text } from "@chakra-ui/react";
-import ExpertImage from "../../assets/expert.png";
+import MaleExpertImage from "../../assets/maleExpert.png";
+import FemaleExpertImage from "../../assets/femaleExpert.png";
 import HorizontalBar from "../HorizontalBar";
-
-const experts = [
-  {
-    name: "Darshana Abeywela",
-    specialty: "Instructor",
-  },
-  {
-    name: "Sahan Weerasinghe",
-    specialty: "Instructor",
-  },
-  {
-    name: "Kamal Ranasinghe",
-    specialty: "Instructor",
-  },
-];
+import useGetStaffMembers from "../../hooks/useGetStaffMembers";
+import PhoneIcon from '../../assets/phone.png';
 
 const ExpertDetails = () => {
+  const{data:staffMembers} = useGetStaffMembers();
+
   return (
     <>
       <Text sx={subText}>Meet a few of our experts</Text>
       <Stack sx={cardContainer}>
-        {experts.map((expert, index) => (
+        {staffMembers && staffMembers.length>0 ?
+        staffMembers.map((member, index) => (
           <Card sx={cardStyles} key={index}>
             <CardBody sx={cardBody}>
-              <Image src={ExpertImage} borderRadius="lg" objectFit="cover" />
+              {member.gender ==="male" ?
+              <Image src={MaleExpertImage} borderRadius="lg" objectFit="cover" />
+              :
+              <Image src={FemaleExpertImage} borderRadius="lg" objectFit="cover" />
+              }
               <Stack mt="4" spacing="4" alignItems="center">
-                <Heading sx={headingText}>{expert.name}</Heading>
-                <Text sx={cardText}>{expert.specialty}</Text>
+                <Heading sx={headingText}>{member.firstName} {member.lastName}</Heading>
+                <Text sx={cardText}>{member.position}</Text>
+                <Text sx={cardText} flexDirection={'row'} display={'flex'} gap={4}>
+                  <Image src={PhoneIcon} w={5} h={5}/> {member.contactNumber}</Text>
               </Stack>
             </CardBody>
           </Card>
-        ))}
+        ))
+        :null}
+        
       </Stack>
       <HorizontalBar />
     </>

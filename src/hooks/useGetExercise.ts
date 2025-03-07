@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 
-export interface Exercises {
+ interface Exercises {
   exerciseImageUrl: string;
   exerciseName: string;
   exerciseDescription: string;
@@ -12,7 +12,7 @@ export interface Exercises {
   exerciseEquipment: string;
 }
 
-interface SuccessResponse {
+export interface SuccessResponse {
   dataList: Exercises[];
 }
 
@@ -21,6 +21,7 @@ interface ErrorResponse {
 }
 
 const useGetExercise = () => {
+  
   const getExerciseList = async () => {
     try {
       const { data: exercises } = await axios.get<SuccessResponse>(
